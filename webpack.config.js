@@ -3,7 +3,8 @@ var webpack = require('webpack')
 var path = require('path')
 
 module.exports = {
-  context: path.join(__dirname, './client'),
+  // context: path.join(__dirname, './client'),
+  context: path.join(__dirname, './src'),			//
   entry: {
     jsx: './index.js',
     html: './index.html',
@@ -13,7 +14,11 @@ module.exports = {
       'react-redux',
       'react-router',
       'react-router-redux',
-      'redux'
+      'redux',
+      'redux-simple-router',		//
+      'redux-form',							//
+      'redux-thunk',						//
+      'redux-logger',						//
     ]
   },
   output: {
@@ -28,7 +33,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: /client/,
+        // include: /client/,
+        include: /src/,					//
         loaders: [
           'style-loader',
           'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
@@ -37,7 +43,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /client/,
+        // exclude: /client/,
+        exclude: /src/,					//
         loader: 'style!css'
       },
       {
@@ -51,7 +58,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: ['node_modules', 'src/mods'],	//
   },
   postcss: [
     rucksack({
@@ -65,7 +73,8 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: './client',
+    // contentBase: './client',
+    contentBase: './src',				//
     hot: true
   }
 }
