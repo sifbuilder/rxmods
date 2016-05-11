@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import TodoItem from './TodoItem'
-import Footer from './Footer'
-import Header from './Header'
-// import './index.css'
-// import * as styles from './styles.scss';
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters'
+import TodoItem from '../TodoItem/TodoItem'
+import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../constants/TodoFilters'
+import style from './style.css'
+import styleapp from './style-app.css'
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
@@ -33,7 +33,7 @@ class MainSection extends Component {
     const { datums, actions } = this.props
     if (datums.todos.length > 0) {
       return (
-        <input className="toggle-all"
+        <input className={style.toggleAll}
                type="checkbox"
                checked={completedCount === datums.todos.length}
                onChange={actions.completeAll} />
@@ -68,12 +68,12 @@ class MainSection extends Component {
     )
 
     return (
-				<div>
+				<div className={styleapp.normal}>
 					<Header addTodo={actions.addTodo} />
-					<section className="main">
+					<section className={style.main}>
 						 {this.renderToggleAll(completedCount)}
 						
-						<ul className="todo-list">
+						<ul className={style.normal}>
 							{filteredTodos.map(todo =>
 								<TodoItem key={todo.id} todo={todo} {...actions} />
 							)}

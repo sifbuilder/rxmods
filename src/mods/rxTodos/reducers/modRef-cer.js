@@ -21,13 +21,9 @@ const initialState = {
 
 export default function todos(state = initialState, action) {
 	
-console.log("modRef-cer state: ");console.log(state);
-console.log("modRef-cer action: ");console.log(action);
-	
-const todos = state.todos
+	const todos = state.todos
   switch (action.type) {
     case modRefActionTypes.ADD_TODO:
-		console.log("modRef-cer ADD_TODO: ");
       return {todos: [
         {
           id: todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,

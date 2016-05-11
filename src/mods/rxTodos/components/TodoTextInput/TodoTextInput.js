@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
-import './index.css'
+import style from './style.css'
 
 class TodoTextInput extends Component {
   constructor(props, context) {
@@ -31,19 +31,20 @@ class TodoTextInput extends Component {
   }
 
   render() {
+    const classes = classnames({
+      [style.edit]: this.props.editing,
+      [style.new]: this.props.newTodo
+    }, style.normal)
+
     return (
-      <input className={
-        classnames({
-          edit: this.props.editing,
-          'new-todo': this.props.newTodo
-        })}
+      <input className={classes}
         type="text"
-        placeholder={this.props.placeholder}
         autoFocus="true"
+        placeholder={this.props.placeholder}
         value={this.state.text}
-        onBlur={this.handleBlur.bind(this)}
-        onChange={this.handleChange.bind(this)}
-        onKeyDown={this.handleSubmit.bind(this)} />
+        onBlur={::this.handleBlur}
+        onChange={::this.handleChange}
+        onKeyDown={::this.handleSubmit} />
     )
   }
 }

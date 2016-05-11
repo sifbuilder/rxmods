@@ -6,7 +6,7 @@ import {ActionTypes,	ActionCreators} from '../actions';
 import modPackage from '../package.js'
 let modName = modPackage.name
 
-import MainSection from '../components/MainSection'
+import MainSection from '../components/MainSection/MainSection'
 
 class modRefNer extends Component {
   render() {

@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import TodoTextInput from './TodoTextInput'
-import './index.css'
+import TodoTextInput from '../TodoTextInput/TodoTextInput'
 
 class Header extends Component {
   handleSave(text) {
@@ -12,7 +11,7 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-          <h1>todos</h1>
+          <h1>Todos</h1>
           <TodoTextInput newTodo
                          onSave={this.handleSave.bind(this)}
                          placeholder="What needs to be done?" />
