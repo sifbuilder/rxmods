@@ -55,11 +55,15 @@ module.exports = {
           'babel-loader'
         ]
       },
+			{
+				test: /\.scss$/,
+				 loader: 'style!css?localIdentName=[path][name]--[local]!postcss-loader!sass',
+			}					
     ],
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    modulesDirectories: ['node_modules', 'src/mods'],	//
+    modulesDirectories: ['node_modules', 'src/libs', 'src/mods'],	//
   },
   postcss: [
     rucksack({

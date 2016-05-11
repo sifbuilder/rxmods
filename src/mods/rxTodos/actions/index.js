@@ -1,3 +1,3 @@
-import { ActionTypes, ActionCreators } from './modRef-ion'
+import { ActionTypes, ActionCreators } from './rxTodos-actions'
 export {ActionTypes, ActionCreators}
 

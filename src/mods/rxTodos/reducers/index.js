@@ -1,6 +1,4 @@
 import { combineReducers } from 'redux'
-import modRefCer from './modRef-cer'
-
-
+import modRefCer from './rxTodos-reducer'
 
 export default modRefCer

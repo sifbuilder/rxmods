@@ -1,14 +1,9 @@
 const mod = {
   "name": "rxTodos",
-  "dependencies": {
-    "babel-runtime": "^6.2.0",
-    "parse-key": "^0.2.1",
-    "react-dock": "^0.2.1",
-    "react-pure-render": "^1.0.2"
-  },
-  "description": "A description of the module",
+  "description": "redux todos component built as composable module. Based on Todos example included in https://github.com/tj/frontend-boilerplate ",
+	"authos": "sibuilder based on work by Dan Abramov, TJ Holowaychuk",
   "license": "MIT",
-  "version": "1.1.0"
+  "version": "0.1.0"
 }
 
 export default  mod

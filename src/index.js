@@ -25,7 +25,7 @@ import logger from 'rxLogger'
 // import d3Msq from 'd3Msq'
 // import d3Quadtree from 'd3Quadtree'
 // import d3Res from 'd3Res'
-// import d3Particles from 'd3Particles'
+import d3Particles from 'd3Particles'
 
 
 
@@ -40,7 +40,7 @@ import logger from 'rxLogger'
 // import rebHome from 'rebHome'
 // import rebList from 'rebList'
 
-// import rxCounter from 'rxCounter'
+import rxCounter from 'rxCounter'
 // import rxNumer from 'rxNumer'
 
 // import rxStoreViz from 'rxStoreViz'
@@ -64,7 +64,7 @@ let mods = {
 	// d3Res,
 
 	
-	// d3Particles,
+	d3Particles,
 
 		// modRef,
 		
@@ -76,7 +76,7 @@ let mods = {
 	// rxCounter,
 	// rxNumer,
 	
-	rxTodos,
+	// rxTodos,
 
 	
 	// uberCity,
@@ -147,50 +147,55 @@ for (let modKey in mods) {
 )(createStore)
 
 
-// console.log("instruments:");console.log(instruments)
-// console.log("instrument:");console.log(rxStoreViz.Ner.instrument())
-// console.log("containers:");console.log(containers)
-
-// the container pases the actions and the data to the app component 
-// the data comes from the module entry in the state, set by the reducer
-// render the components with the store 
- 
  /* ------------- RENDER */
 var store = createStoreWithMiddleware(combineReducers(reducers))
 // renderNer (containers, store)	
 
 
-function renderRoutes() {
-   // <Router history={history} >
+function renderRoutes(rs) {
+		// expect:
+		// <Router history={history} >
 		// <Route path="/" component={routes[0].container}>
 		// <Route path="list" component={containers.rebList} />
 		// <Route status={404} path="*" component={containers.rebHome} />
 		// </Route>	
     // </Router>
-
-	let r = routes.find(d => d.path == '/')
-	let rs = routes.filter(d => d.path !== '/')
+	let _r = rs.find(d => d.path == '/')
+	let _rs = rs.filter(d => d.path !== '/')
 	return (
-		<Route path={r.path} component={r.container}>
-				{rs.map(r =>
-								<Route path={r.path} component={r.container} />
+		<Route path={_r.path} component={_r.container}>
+				{_rs.map(_r =>
+								<Route path={_r.path} component={_r.container} />
 							)}
 		</Route>	
 	)
 }
 
-function renderRouter() {
+function renderRouter(rs) {
 	return(
 		 <Router history={history} >
-		 			{renderRoutes()}
+		 			{renderRoutes(rs)}
 		 </Router>
 	)
 }
 
-render(
-  <Provider store={store}>
-			{renderRouter()}
-  </Provider>,
-  document.getElementById('root')
-)
+function renderRouted(cs, s, rs) {
+	for (let NerKey in cs) {
+		let NerObj = cs[NerKey]
+		render(
+			 <Provider store={s}>
+						{renderRouter(rs)}
+				</Provider>,
+				newelm(NerKey))
+	}
+}
+
+function renderApp(cs, s, rs) {
+	if (rs.length == 0) { 
+		renderNer(cs, store) }
+	else {renderRouted(cs, s, rs)}
+}
+
+renderApp(containers, store, routes)
+
 
