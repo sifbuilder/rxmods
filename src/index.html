@@ -2,12 +2,55 @@
 <head>
   <meta charset="utf-8" />
    <title>Redux D3 examples</title>
+<style>
+
+html, body, #root
+{
+    width: 100%; 
+    height: 100%; 
+    margin: 0;
+		padding: 0;
+    min-width: 600;
+    min-height: 600;
+		font: 10px/13px 'Lucida Sans',sans-serif;
+}
+
+
+.tile {
+      float: left;
+      position: relative;
+      width: 20%;
+      padding-bottom: 10%;
+    background: rgb(242,242,242);
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    margin: 0 4px;
+    min-width: 250;
+    min-height: 250;
+		overflow:hidden;
+}
+</style>
+	 
   </head>
   <body>
-     <div id="root"></div>
+     <div id="root" >
+            <div style="display: inline;">
+              <div class="tile" id="rxTodos"></div>
+              <div class="tile" id="d3Particles"></div>
+							<div class="tile" id="rxNumer"></div>
+							<!--
+ 							<div class="tile" id="d3lanes"></div>
+							-->
+ 							<div class="tile" id="asyncData"></div>
+ 							<div class="tile" id="d3Res"></div>
+							<!--
+ 							<div class="tile" id="d3Quadtree"></div>
+							-->
+            </div>
+		 </div>
 
-    <script src="/vendor.bundle.js"></script>
-    <script src="/bundle.js"></script>
+    <script src="./vendor.bundle.js"></script>
+    <script src="./bundle.js"></script>
 	
   </body>
 </html>

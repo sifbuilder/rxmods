@@ -1,0 +1,33 @@
+:local(.styles) {
+	 #container {
+			 width: 100%;
+			 height: 100%;
+	 }
+
+	 text {
+		 font-family: sans-serif;
+	 }
+
+	 g.actor line {
+		 stroke: lightgray;
+		 stroke-width: 1px;
+	 }
+
+	 g.message text {
+		 font-family: monospace;
+	 }
+
+	 g.message line {
+		 stroke: black;
+		 stroke-width: 2px;
+	 }
+
+	 g.message path {
+		 stroke: black;
+		 stroke-width: 2px;
+	 }
+
+		msg-arrow {
+		 color: red;
+	 }
+}

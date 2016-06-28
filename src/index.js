@@ -21,10 +21,10 @@ import thunk from 'rxThunk'
 import logger from 'rxLogger'
 
 
-// import asyncData from 'asyncData'
-// import d3Msq from 'd3Msq'
-// import d3Quadtree from 'd3Quadtree'
-// import d3Res from 'd3Res'
+import asyncData from 'asyncData'
+import d3lanes from 'd3lanes'
+import d3Quadtree from 'd3Quadtree'
+import d3Res from 'd3Res'
 import d3Particles from 'd3Particles'
 
 
@@ -40,8 +40,8 @@ import d3Particles from 'd3Particles'
 // import rebHome from 'rebHome'
 // import rebList from 'rebList'
 
-import rxCounter from 'rxCounter'
-// import rxNumer from 'rxNumer'
+// import rxCounter from 'rxCounter'
+import rxNumer from 'rxNumer'
 
 // import rxStoreViz from 'rxStoreViz'
 
@@ -58,10 +58,10 @@ let mods = {
 	thunk,			// middleware
 	// logger,			// middleware
 	
-	// asyncData,
-	// d3Msq,
-	// d3Quadtree,
-	// d3Res,
+	asyncData,
+	d3lanes,
+	d3Quadtree,
+	d3Res,
 
 	
 	d3Particles,
@@ -74,9 +74,9 @@ let mods = {
 
 	// rxStoreViz,		// instrument
 	// rxCounter,
-	// rxNumer,
+	rxNumer,
 	
-	// rxTodos,
+	rxTodos,
 
 	
 	// uberCity,
@@ -86,7 +86,7 @@ let mods = {
 
 /* ------------- UTILS */
  var newelm = function (elid) {
-	let element = document.getElementById("root");
+	let element = document.getElementById("root")
 	let asyncDataElm = document.createElement("div");
 	asyncDataElm.setAttribute("id", elid);
 	asyncDataElm.setAttribute("class", elid);
@@ -95,14 +95,26 @@ let mods = {
 	return elem
 }
 
+ var getelm = function (elid) {
+	let rootElem = document.getElementById("root")
+	let contanierElem = document.getElementById(elid)
+	
+	return contanierElem
+}
+
+
 var renderNer = function (containers, store) {
 	for (let NerKey in containers) {
 		let NerObj = containers[NerKey]
-		render(
-			<Provider store={store}>
-					<NerObj />
-			</Provider>
-			,newelm(NerKey))
+		let contanierElem = document.getElementById(NerKey)
+console.log("NerKey: ", contanierElem)	
+		if (contanierElem) {
+			render(
+				<Provider store={store}>
+						<NerObj />
+				</Provider>
+				,contanierElem)
+			}
 	}
 }
 
@@ -127,7 +139,7 @@ for (let modKey in mods) {
  // console.log("...thunk:");console.log( mods.thunk.MW)
  // console.log("...logger:");console.log(mods.logger.MW)
  // console.log("...middleware:");console.log(middleware)
- console.log("...routes:");console.log(routes)
+ // console.log("...routes:");console.log(routes)
  
  
  // const createStoreWithMiddleware = compose(
@@ -192,10 +204,12 @@ function renderRouted(cs, s, rs) {
 
 function renderApp(cs, s, rs) {
 	if (rs.length == 0) { 
-		renderNer(cs, store) }
-	else {renderRouted(cs, s, rs)}
+		renderNer(cs, s) }
+	else {
+		renderRouted(cs, s, rs)
+	}
 }
 
-renderApp(containers, store, routes)
+renderApp(containers, store, [])
 
 
