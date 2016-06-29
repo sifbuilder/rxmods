@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import TodoTextInput from '../TodoTextInput/TodoTextInput'
 import classnames from 'classnames'
-import style from './style.css'
+import style from '../styles/style-todoitem.css'
 
 class TodoItem extends Component {
   constructor(props, context) {

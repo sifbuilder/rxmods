@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import modRefCer from './modRef-cer'
+import modRefCer from './redux3d-d3particles-reducer'
 
 
 

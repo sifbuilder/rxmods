@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import TodoTextInput from '../TodoTextInput/TodoTextInput'
+import style from '../styles/style-app.css'
 
 class Header extends Component {
   handleSave(text) {

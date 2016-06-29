@@ -1,2 +1,2 @@
-import container from './modRef-ner';
+import container from './redux3d-d3particles-container';
 export default container

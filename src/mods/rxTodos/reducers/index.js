@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux'
-import modRefCer from './rxTodos-reducer'
+import modRefCer from './redux3d-rxtodos-reducer'
 
 export default modRefCer

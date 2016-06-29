@@ -1,2 +1,2 @@
-import container from './modRef-ner';
+import container from './redux3d-asyncdata-container';
 export default container

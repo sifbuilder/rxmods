@@ -1,2 +1,2 @@
-import container from './refModel-ner';
+import container from './redux3d-d3quadtree-container';
 export default container

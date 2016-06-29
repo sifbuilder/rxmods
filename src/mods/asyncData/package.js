@@ -1,5 +1,5 @@
 const mod = {
-  "name": "asyncData",
+  "name": "asyncdata",
   "dependencies": {
     "babel-runtime": "^6.2.0",
     "parse-key": "^0.2.1",

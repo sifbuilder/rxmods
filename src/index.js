@@ -21,17 +21,17 @@ import thunk from 'rxThunk'
 import logger from 'rxLogger'
 
 
-import asyncData from 'asyncData'
-import d3lanes from 'd3lanes'
-import d3Quadtree from 'd3Quadtree'
-import d3Res from 'd3Res'
-import d3Particles from 'd3Particles'
+import asyncdata from 'asyncdata'
+import lanes from 'lanes'
+import d3quadtree from 'd3quadtree'
+import d3particles from 'd3particles'
+import d3circles from 'd3circles'
 
 
 
-// var d3ParticlesEs = require('d3Particles/index.js')
-// var d3Particles
-// if (d3ParticlesEs.__esModule) d3Particles=d3ParticlesEs.default
+// var d3particlesEs = require('d3particles/index.js')
+// var d3particles
+// if (d3particlesEs.__esModule) d3particles=d3particlesEs.default
 
 
 // import modRef from 'modRef'
@@ -41,11 +41,11 @@ import d3Particles from 'd3Particles'
 // import rebList from 'rebList'
 
 // import rxCounter from 'rxCounter'
-import rxNumer from 'rxNumer'
+import rxnumer from 'rxnumer'
 
 // import rxStoreViz from 'rxStoreViz'
 
-import rxTodos from 'rxTodos'
+import rxtodos from 'rxtodos'
 
 // import uberCity from 'uberCity'
 
@@ -57,15 +57,13 @@ let mods = {
 	form,			// reducer
 	thunk,			// middleware
 	// logger,			// middleware
-	
-	asyncData,
-	d3lanes,
-	d3Quadtree,
-	d3Res,
-
-	
-	d3Particles,
-
+	asyncdata,
+	lanes,
+	d3quadtree,
+	d3particles,
+	rxnumer,
+	rxtodos,
+	d3circles,
 		// modRef,
 		
 	// rebApp,
@@ -74,10 +72,6 @@ let mods = {
 
 	// rxStoreViz,		// instrument
 	// rxCounter,
-	rxNumer,
-	
-	rxTodos,
-
 	
 	// uberCity,
 	
@@ -87,10 +81,10 @@ let mods = {
 /* ------------- UTILS */
  var newelm = function (elid) {
 	let element = document.getElementById("root")
-	let asyncDataElm = document.createElement("div");
-	asyncDataElm.setAttribute("id", elid);
-	asyncDataElm.setAttribute("class", elid);
-	element.appendChild(asyncDataElm);
+	let asyncdataElm = document.createElement("div");
+	asyncdataElm.setAttribute("id", elid);
+	asyncdataElm.setAttribute("class", elid);
+	element.appendChild(asyncdataElm);
 	let elem = document.getElementById(elid)
 	return elem
 }
@@ -103,11 +97,49 @@ let mods = {
 }
 
 
+let middleware = []
+let instruments = []
+let reducers = {} // form: formReducer,	// routing: routeReducer,
+let containers = {}
+let routes = []
+
+for (let modKey in mods) {
+ 	if (mods[modKey].Ner != undefined) containers[modKey] = mods[modKey].Ner	// containers
+	if (mods[modKey].Cer != undefined) reducers[modKey] = mods[modKey].Cer		// reducers
+	if (mods[modKey].MW != undefined) middleware.push(mods[modKey].MW)				// middleWare
+	if (mods[modKey].Inst != undefined) instruments.push(mods[modKey].Inst)		// instruments
+	if (mods[modKey].Route != undefined) routes.push(mods[modKey].Route)			// routes
+}
+// console.log("...thunk:");console.log( mods.thunk.MW)
+// console.log("...logger:");console.log(mods.logger.MW)
+// console.log("...middleware:");console.log(middleware)
+console.log("...routes:");console.log(routes)
+ 
+ 
+  /* ------------- store with middleware */
+  // expect:
+  // const createStoreWithMiddleware = compose(
+	// applyMiddleware(
+		// thunk,
+		// logger(),
+	// ),
+	// rxStoreViz.Ner.instrument()
+	// )(createStore)
+const createStoreWithMiddleware = compose(
+	applyMiddleware(
+		...middleware
+	),
+	...instruments
+)(createStore)
+
+var store = createStoreWithMiddleware(combineReducers(reducers))
+
+
+/* ------------- render un-routed */
 var renderNer = function (containers, store) {
 	for (let NerKey in containers) {
 		let NerObj = containers[NerKey]
 		let contanierElem = document.getElementById(NerKey)
-console.log("NerKey: ", contanierElem)	
 		if (contanierElem) {
 			render(
 				<Provider store={store}>
@@ -118,52 +150,7 @@ console.log("NerKey: ", contanierElem)
 	}
 }
 
-let middleware = []
-let instruments = []
-let reducers = {} // form: formReducer,	// routing: routeReducer,
-let containers = {}
-let routes = []
-
-
-// console.log("_e_ index mods:" ); console.log(mods);
-
-for (let modKey in mods) {
- // console.log("_e_ index mw:" + modKey + " " ); console.log(mods[modKey].MW );
-	if (mods[modKey].Ner != undefined) containers[modKey] = mods[modKey].Ner
-	if (mods[modKey].Cer != undefined) reducers[modKey] = mods[modKey].Cer
-	if (mods[modKey].MW != undefined) middleware.push(mods[modKey].MW)
-	if (mods[modKey].Inst != undefined) instruments.push(mods[modKey].Inst)
-	if (mods[modKey].Route != undefined) routes.push(mods[modKey].Route)
-}
- 
- // console.log("...thunk:");console.log( mods.thunk.MW)
- // console.log("...logger:");console.log(mods.logger.MW)
- // console.log("...middleware:");console.log(middleware)
- // console.log("...routes:");console.log(routes)
- 
- 
- // const createStoreWithMiddleware = compose(
-	// applyMiddleware(
-		// thunk,
-		// logger(),
-	// ),
-	// rxStoreViz.Ner.instrument()
-// )(createStore)
-  const createStoreWithMiddleware = compose(
-	applyMiddleware(
-		...middleware
-		// mods.thunk.MW,
-		// mods.logger.MW,
-	),
-	...instruments
-)(createStore)
-
-
- /* ------------- RENDER */
-var store = createStoreWithMiddleware(combineReducers(reducers))
-// renderNer (containers, store)	
-
-
+/* ------------- render routed */
 function renderRoutes(rs) {
 		// expect:
 		// <Router history={history} >
@@ -202,6 +189,7 @@ function renderRouted(cs, s, rs) {
 	}
 }
 
+/* ------------- render app */
 function renderApp(cs, s, rs) {
 	if (rs.length == 0) { 
 		renderNer(cs, s) }

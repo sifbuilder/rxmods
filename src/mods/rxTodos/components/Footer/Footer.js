@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../constants/TodoFilters'
 import classnames from 'classnames'
-import style from './style.css'
+import style from '../styles/style-footer.css'
 
 const FILTER_TITLES = {
   [SHOW_ALL]: 'All',

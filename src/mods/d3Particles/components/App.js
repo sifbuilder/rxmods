@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
-import d3 from 'd3.v4.0.0-alpha.39';
+import * as d3 from 'd3.v4.0.0';
 
 import Particles from './Particles';
 import Footer from './Footer';

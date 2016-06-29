@@ -1,5 +1,5 @@
 const mod = {
-  "name": "rxNumer",
+  "name": "rxnumer",
   "dependencies": {
     "babel-runtime": "^6.2.0",
     "parse-key": "^0.2.1",

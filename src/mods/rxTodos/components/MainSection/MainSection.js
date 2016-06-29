@@ -3,8 +3,8 @@ import TodoItem from '../TodoItem/TodoItem'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../constants/TodoFilters'
-import style from './style.css'
-import styleapp from './style-app.css'
+import style from '../styles/style-main.css'
+import styleapp from '../styles/style-app.css'
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
