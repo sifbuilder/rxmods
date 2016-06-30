@@ -14,30 +14,27 @@ const rxmodPackageName = rxmodPackage.name
 import rxmodActions from '../actions';
 const { ActionTypes, ActionCreators } = rxmodActions
 
-import rxmodD3circlesComponent  from '../components/redux3d-d3circles-component';
+import __modRefEnt  from '../components';
 
 class modRefNer extends Component {
 	constructor(props) {
 		super(props);
 	}
   
-    componentDidMount() {
-      // let e1 = 	ReactDOM.findDOMNode(this.refs.__modRefEnt)
-
-	}
-  	componentDidUpdate() {
-      // let e1 = 	ReactDOM.findDOMNode(this.refs.__modRefEnt)
+  componentDidMount() {
 	}
 	
+  componentDidUpdate() {
+	}
 	
   render() {
 	const { __modRefItems } = this.props
     return (
       <section>
        <div className="container">
-					<rxmodD3circlesComponent ref='e1EntRef' {...this.props} />
+					<__modRefEnt ref='e1EntRef' {...this.props} />
         </div>
-	</section>
+			</section>
     );
   }
 }

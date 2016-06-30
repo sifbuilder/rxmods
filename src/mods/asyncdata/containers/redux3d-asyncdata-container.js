@@ -1,12 +1,18 @@
+/* ---------------------------			*/
+/* redux3d-asyncdata-container.js 	*/
+/* ---------------------------			*/
+
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { pushState } from 'react';
 import ReactDOM from 'react-dom';
 
-import {ActionTypes,	ActionCreators} from '../actions';
 import rxmodPackage from '../package.js'
 const rxmodReducerName = rxmodPackage.name
+
+import {ActionTypes,	ActionCreators} from '../actions';
+
 import rxmodComponents  from '../components';
 let __modRefEnt = rxmodComponents.rxmodComponent
 
