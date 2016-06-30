@@ -1,9 +1,11 @@
-import ModPackage from '../package.js'
-let modName = ModPackage.name
+/* ---------------------------			*/
+/* redux3d-d3circles-actions.js   		*/
+/* ---------------------------			*/
 
-const ctts = {
-}
+import rxmodPackage from '../package.js'
+let rxmodPackageName = rxmodPackage.name
 
+// https://github.com/STRML/keyMirror
 var keyMirror = function(obj, prefix='') {
   var ret = {};
   var key;
@@ -16,11 +18,14 @@ var keyMirror = function(obj, prefix='') {
     }
   }
   return ret;
+};
+
+const actionConstants = {
 }
 
+const ActionTypes = keyMirror(actionConstants, '')
 
-export const ActionTypes = keyMirror(ctts, '')
+const ActionCreators = {
+}
 
-export const ActionCreators = {
-
-};
+export default {ActionTypes, ActionCreators};

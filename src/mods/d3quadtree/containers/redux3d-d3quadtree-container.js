@@ -13,7 +13,7 @@ import * as obj from '../actions';
 let __refModelIon = obj.default			// <========== set actions
 
 /* reducer */
-let __refModelCer = 'd3Quadtree'				// <========== set Cer
+let __refModelCer = 'd3quadtree'				// <========== set Cer
 
 // -----------
 
@@ -47,7 +47,6 @@ class __refModelNer extends Component {
 
 	// 				
   render() {
-	console.log("_e_  __refModelNer render props:"); console.log(this.props); 
 	const { refModelItems } = this.props
     return (
       <section>
@@ -80,7 +79,8 @@ __refModelNer.propTypes = {
 
 /* __advModelChildEnt - connect to STORE */
 function mapStateToProps(state) {
-  return {
+ 	console.log("_e_  __refModelNer state:",state)
+ return {
 	refModelItems: state[__refModelCer].refModelItems,
   };
 }

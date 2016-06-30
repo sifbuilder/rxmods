@@ -1,14 +1,20 @@
+/* ---------------------------			*/
+/* redux3d-rxnumer-container.js  		*/
+/* ---------------------------			*/
+
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ModPackage from '../package.js'
-const modName = ModPackage.name
+import rxmodPackage from '../package.js'
+const rxmodPackageName = rxmodPackage.name
 
-import {ActionTypes,	ActionCreators} from '../reducers/redux3d-rxnumer-reducer'
-import modEnt  from '../components/redux3d-rxnumer-component';
+import rxmodActions from '../actions';
+const { ActionTypes, ActionCreators } = rxmodActions
 
-class modNer extends Component {
+import rxmodComponent  from '../components/redux3d-rxnumer-component';
+
+class rxmodContainer extends Component {
   render() {
     return (
       {app}
@@ -16,7 +22,7 @@ class modNer extends Component {
   }
 }
 
-modNer.propTypes = {
+rxmodContainer.propTypes = {
 	actions: PropTypes.object.isRequired,
 	datums: PropTypes.object.isRequired,
 }
@@ -29,8 +35,8 @@ var app = function renderApp() {
 
 function mapStateToProps(state) {
   return {		
-		modName: modName,
-		datums: state[modName]
+		rxmodPackageName: rxmodPackageName,
+		datums: state[rxmodPackageName]
   };
 }
 
@@ -43,5 +49,5 @@ function mapDispatchToProps(dispatch) {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(modEnt);
+)(rxmodComponent);
 

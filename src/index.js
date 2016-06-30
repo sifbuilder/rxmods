@@ -22,10 +22,20 @@ import logger from 'rxLogger'
 
 
 import asyncdata from 'asyncdata'
-import lanes from 'lanes'
-import d3quadtree from 'd3quadtree'
 import d3particles from 'd3particles'
 import d3circles from 'd3circles'
+import d3bars from 'd3bars'			//
+import d3lines from 'd3lines'		//
+import d3quadtree from 'd3quadtree'	//
+import rxtodos from 'rxtodos'
+import rxnumer from 'rxnumer'
+
+import d3shapes from 'd3shapes'
+import d3svg from 'd3svg'
+
+
+
+import lanes from 'lanes'
 
 
 
@@ -33,19 +43,14 @@ import d3circles from 'd3circles'
 // var d3particles
 // if (d3particlesEs.__esModule) d3particles=d3particlesEs.default
 
-
-// import modRef from 'modRef'
-
 // import rebApp from 'rebApp'
 // import rebHome from 'rebHome'
 // import rebList from 'rebList'
 
 // import rxCounter from 'rxCounter'
-import rxnumer from 'rxnumer'
 
 // import rxStoreViz from 'rxStoreViz'
 
-import rxtodos from 'rxtodos'
 
 // import uberCity from 'uberCity'
 

@@ -1,5 +1,5 @@
 import * as d3 from 'd3.v4.0.0';
-import modRefChart from './modRef-chart';
+import modRefChart from './redux3d-d3bars-chart';
 
 // ---------------------------
 function page (elem, props = {}, ownProps = {}) {

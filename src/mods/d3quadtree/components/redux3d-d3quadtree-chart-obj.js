@@ -15,8 +15,8 @@ class ChartD3V4Obj {
 		});
 
 		var quadtree = d3.quadtree()
+			.addAll(data)
 			.extent([[-1, -1], [width + 1, height + 1]])
-			(data);
 
 		var color = d3.scaleLinear()
 			.domain([0, 8])  // max depth of quadtree

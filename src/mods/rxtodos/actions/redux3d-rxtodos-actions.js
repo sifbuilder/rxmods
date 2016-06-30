@@ -1,15 +1,11 @@
+/* ---------------------------			*/
+/* redux3d-rxtodos-actions.js   		*/
+/* ---------------------------			*/
+
 import ModPackage from '../package.js'
 let modName = ModPackage.name				// <===== id
 
-const ctts = {
-	ADD_TODO: '',
-	DELETE_TODO: '',
-	EDIT_TODO: '',
-	COMPLETE_TODO: '',
-	COMPLETE_ALL: '',
-	CLEAR_COMPLETED: '',
-}
-
+// https://github.com/STRML/keyMirror
 var keyMirror = function(obj, prefix='') {
   var ret = {};
   var key;
@@ -24,7 +20,17 @@ var keyMirror = function(obj, prefix='') {
   return ret;
 }
 
-export const ActionTypes = keyMirror(ctts, '@@' + modName + '/')
+
+const actionConstants = {
+	ADD_TODO: '',
+	DELETE_TODO: '',
+	EDIT_TODO: '',
+	COMPLETE_TODO: '',
+	COMPLETE_ALL: '',
+	CLEAR_COMPLETED: '',
+}
+
+export const ActionTypes = keyMirror(actionConstants, '@@' + modName + '/')
 
 export const ActionCreators = {
 	addTodo(text) {
@@ -46,4 +52,5 @@ export const ActionCreators = {
 	  return { type: ActionTypes.CLEAR_COMPLETED }
 	},
 };
+
 

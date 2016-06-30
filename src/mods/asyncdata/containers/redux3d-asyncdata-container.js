@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { pushState } from 'react';
 import ReactDOM from 'react-dom';
 
-import {ActionTypes as __modRefCtt,	ActionCreators as __modRefIon} from '../actions';
-import __modRefCard from '../package.js'
-const __modRefCerName = __modRefCard.name
-import ents  from '../components';
-let __modRefEnt = ents.__modRefEnt
+import {ActionTypes,	ActionCreators} from '../actions';
+import rxmodPackage from '../package.js'
+const rxmodReducerName = rxmodPackage.name
+import rxmodComponents  from '../components';
+let __modRefEnt = rxmodComponents.rxmodComponent
 
 class __modRefNer extends Component {
 	constructor(props) {
@@ -32,7 +32,7 @@ __modRefNer.propTypes = {
 }
 
 function mapStateToProps(state) {
-	const datums = state[__modRefCerName]
+	const datums = state[rxmodReducerName]
   const { modRefSelectCer, modRefListCer } = datums
   const { cats100, cat100NameSelected } = modRefSelectCer
   const { isFetching, lastUpdated, items: item100s } 

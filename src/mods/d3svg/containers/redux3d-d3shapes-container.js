@@ -6,11 +6,7 @@ import ReactDOM from 'react-dom';
 
 import __modRefIon from '../actions';		// <===== ctts
 const __modRefCer = 'd3Res'				// <===== id
-import __modRefEnt  from '../components/d3Bars/modRef-ent';
-import __d3CirclesEnt  from '../components/d3Circles/chartD3V4-ent';
-import LineChartEnt  from '../components/d3Lines/line-chart-ent';
-import ShapeEnt from '../components/d3Shapes/d3Shapes-ent';
-import __refModelSvgEnt  from '../components/d3Svg/__refModel-svg-ent';
+import __refModelSvgEnt  from '../components/redux3d-d3svg-component';
 
 let data = {
   points: [
@@ -41,22 +37,13 @@ class __modRefNer extends Component {
       // let e1 = 	ReactDOM.findDOMNode(this.refs.__modRefEnt)
 	}
 	
-// 				<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
-
-					 // <ShapeEnt ref='ShapeRef' {...this.props} />
-					 					// <__refModelSvgEnt ref='__refModelSvgEnt' {...this.props} />
-
 
   render() {
 	const { __modRefItems } = this.props
     return (
       <section>
        <div className="container">
-			<p> |----- d3Res container  </p>
-					<__modRefEnt ref='__modRefEnt' {...this.props} />
-					<__d3CirclesEnt ref='e1EntRef' {...this.props} />
-					 <LineChartEnt data={data} width={600}	height={300}/>
-			<p>  container d3Res ---------| </p>
+<__refModelSvgEnt ref='__refModelSvgEnt' {...this.props} />
         </div>
 	</section>
     );

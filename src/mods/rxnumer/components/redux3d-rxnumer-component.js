@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import { styles, textStyles  } from './styles.scss';
 
-class __modRefEnt extends Component {
+class rxmodComponent extends Component {
   render() {
   const { modName, datums, actions} = this.props
     return (
@@ -22,10 +22,10 @@ class __modRefEnt extends Component {
   }
 }
 
-__modRefEnt.propTypes = {
+rxmodComponent.propTypes = {
   actions: PropTypes.object.isRequired,
   datums: PropTypes.object.isRequired,
-	modName: PropTypes.string.isRequired,
+	rxmodPackageName: PropTypes.string.isRequired,
 }
 
-export default __modRefEnt
+export default rxmodComponent

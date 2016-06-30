@@ -1,2 +1,8 @@
-import reducer, { ActionTypes, ActionCreators }  from './redux3d-rxnumer-reducer';
-export  { reducer as default, ActionTypes, ActionCreators }
+/* ---------------------------			   */
+/* redux3d/rxnumer/reducers/index.js   */
+/* ---------------------------			   */
+
+import { combineReducers } from 'redux'
+import modRefCer from './redux3d-rxnumer-reducer'
+
+export default modRefCer

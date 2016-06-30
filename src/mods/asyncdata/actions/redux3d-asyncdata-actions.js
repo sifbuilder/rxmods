@@ -1,8 +1,8 @@
 import d3 from 'd3.v4.0.0'
 
 import fetch from 'isomorphic-fetch'
-import __modRefCard from '../package.js'
-let __modRefCerName = __modRefCard.name				// <===== id
+import rxmodPackage from '../package.js'
+let rxmodReducerName = rxmodPackage.name				// <===== id
 
 // fb
 var keyMirror = function(obj) {
@@ -67,7 +67,6 @@ export const ActionCreators = {
 	},
 
 	receiveItem100sFromCsv(cat100NameSelected, json) {
-							console.log("_e___________ actions : " + JSON.stringify(json, null, 2))
 	  return {
 		type: ActionTypes.RECEIVE_ITEM100S,
 		cat100NameSelected: cat100NameSelected,
@@ -77,7 +76,7 @@ export const ActionCreators = {
 	},
 
 	fetchItem100s(state, cat100NameSelected) {
-		const type100 = state[__modRefCerName].modRefSelectCer.cats100.filter(x => x.cat100Name === cat100NameSelected)[0].type100
+		const type100 = state[rxmodReducerName].modRefSelectCer.cats100.filter(x => x.cat100Name === cat100NameSelected)[0].type100
 		return dispatch => {
 			if (type100 === 'http') {
 				dispatch(ActionCreators.requestItem100sFromUrl(cat100NameSelected))
@@ -91,14 +90,11 @@ export const ActionCreators = {
 				let url = `../data/${cat100NameSelected}.csv`
 				return  d3.requestText(url)
 					.response(function(xhr) { 
-						// console.log("_e___________ actions xhr: " + JSON.stringify(xhr, null, 2))
 						let x =  dsv.parse(xhr.responseText); 
-						// console.log("_e___________ actions : " + JSON.stringify(x, null, 2))
 						return x
 					})
 					.get(function (e, d) {
 						if (e){
-								console.log("_e___________ actions error: " + JSON.stringify(Error(e), null, 2))
 							} else {
 								dispatch(ActionCreators.receiveItem100sFromCsv(cat100NameSelected, d))
 						}
@@ -108,7 +104,7 @@ export const ActionCreators = {
 	},
 
 	shouldFetchItem100s(state, cat100NameSelected) {
-	  const Item100s = state[__modRefCerName].modRefListCer[cat100NameSelected]	//<==
+	  const Item100s = state[rxmodReducerName].modRefListCer[cat100NameSelected]	//<==
 	  if (!Item100s) {
 		return true
 	  }

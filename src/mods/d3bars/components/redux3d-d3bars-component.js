@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom';
 import * as d3 from 'd3.v4.0.0';
-import modRefPage from './modRef-page';
+import modRefPage from './redux3d-d3bars-page';
 
-import { styles } from './modRef-styles.scss';
+import { styles } from './redux3d-d3bars-styles.scss';
 
 export default class __modRefEnt extends Component {
 	 static propTypes = {
@@ -33,9 +33,7 @@ export default class __modRefEnt extends Component {
   render() {
     return (
 	     <div className="component">
-			<p> |------- d3Bars  </p>
 				<div ref="d3Bars" id="d3Bars" className={styles}></div>
-			<p>  d3Bars ------| </p>
 		</div>	
     )
   }

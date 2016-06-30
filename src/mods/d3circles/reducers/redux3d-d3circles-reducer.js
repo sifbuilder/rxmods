@@ -1,6 +1,12 @@
+/* ---------------------------			*/
+/* redux3d-d3circles-reducer.js   		*/
+/* ---------------------------			*/
+
+import rxmodActions from '../actions';
+const { ActionTypes, ActionCreators } = rxmodActions
 		
-import __modRefCard from '../package.js'
-let __modRefCerName = __modRefCard.name
+import ModPackage from '../package.js'
+let modName = ModPackage.name
 
 const initialState = {
   __modRefItems: [{
@@ -8,10 +14,12 @@ const initialState = {
   }]
 }
 
-export default function __modRefItems(state = initialState, action) {
+function rxmodReducer(state = initialState, action) {
   switch (action.type) {
 
   default:
     return state;
   }
-};
+}
+
+export default rxmodReducer;

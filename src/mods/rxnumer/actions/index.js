@@ -1,5 +1,5 @@
 /* ---------------------------			   */
-/* redux3d/d3circles/actions/index.js    */
+/* redux3d/rxnumer/actions/index.js    */
 /* ---------------------------			   */
-import rxmodActions from './redux3d-d3circles-actions'
+import rxmodActions from './redux3d-rxnumer-actions'
 export default rxmodActions
