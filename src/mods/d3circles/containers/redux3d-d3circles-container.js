@@ -14,7 +14,9 @@ const rxmodPackageName = rxmodPackage.name
 import rxmodActions from '../actions';
 const { ActionTypes, ActionCreators } = rxmodActions
 
-import __modRefEnt  from '../components';
+import __modRefEnt  from '../components/redux3d-d3circles-component';
+// import rxmodComponents  from '../components';
+// const { rxmodComponent } = rxmodComponents
 
 class modRefNer extends Component {
 	constructor(props) {
