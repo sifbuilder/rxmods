@@ -14,11 +14,11 @@ const rxmodPackageName = rxmodPackage.name
 import rxmodActions from '../actions';
 const { ActionTypes, ActionCreators } = rxmodActions
 
-import __modRefEnt  from '../components/redux3d-d3circles-component';
+import RxmodComponent  from '../components/redux3d-d3circles-component';
 // import rxmodComponents  from '../components';
-// const { rxmodComponent } = rxmodComponents
+// const { RxmodComponent } = rxmodComponents
 
-class modRefNer extends Component {
+class rxmodContainer extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -34,14 +34,14 @@ class modRefNer extends Component {
     return (
       <section>
        <div className="container">
-					<__modRefEnt ref='e1EntRef' {...this.props} />
+					<RxmodComponent ref='e1EntRef' {...this.props} />
         </div>
 			</section>
     );
   }
 }
 
-modRefNer.propTypes = {
+rxmodContainer.propTypes = {
   __modRefItems: PropTypes.array.isRequired,
 }
 function mapStateToProps(state) {
@@ -57,6 +57,6 @@ function mapDispatchToProps(dispatch) {
 export default  connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(modRefNer);
+)(rxmodContainer);
 
 
