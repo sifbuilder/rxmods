@@ -1,4 +1,4 @@
-import { ActionTypes, ActionCreators } from './redux3d-asyncdata-actions'
+import { ActionTypes, ActionCreators } from './rxmod-asyncdata-actions'
 
 export {ActionTypes, ActionCreators}
 

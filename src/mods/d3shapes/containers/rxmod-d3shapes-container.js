@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 
 import __modRefIon from '../actions';		// <===== ctts
 const __modRefCer = 'd3Res'				// <===== id
-import ShapeEnt from '../components/redux3d-d3shapes-component';
+import ShapeEnt from '../components/rxmod-d3shapes-component';
 
 let data = {
   points: [

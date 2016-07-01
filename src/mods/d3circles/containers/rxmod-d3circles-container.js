@@ -1,5 +1,5 @@
 /* ---------------------------			*/
-/* redux3d-d3circles-container.js  		*/
+/* rxmod-d3circles-container.js  		*/
 /* ---------------------------			*/
 
 import React, { Component, PropTypes } from 'react';
@@ -14,7 +14,7 @@ const rxmodPackageName = rxmodPackage.name
 import rxmodActions from '../actions';
 const { ActionTypes, ActionCreators } = rxmodActions
 
-import RxmodComponent  from '../components/redux3d-d3circles-component';
+import RxmodComponent  from '../components/rxmod-d3circles-component';
 // import rxmodComponents  from '../components';
 // const { RxmodComponent } = rxmodComponents
 

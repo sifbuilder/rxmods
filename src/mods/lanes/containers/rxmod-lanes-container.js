@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import {ActionTypes as __modRefCtt,
 		ActionCreators as __modRefIon} from '../actions';
 import __modRefCard from '../package.js'
-import __modRefEnt  from '../components/redux3d-lanes-component';
+import __modRefEnt  from '../components/rxmod-lanes-component';
 let __modRefCer = __modRefCard.name
 let _e_ = __modRefCard.name
 

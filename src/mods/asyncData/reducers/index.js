@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import modRefSelectCer from './redux3d-asyncdata-select-reducer'
-import modRefListCer from './redux3d-asyncdata-list-reducer'
+import modRefSelectCer from './rxmod-asyncdata-select-reducer'
+import modRefListCer from './rxmod-asyncdata-list-reducer'
 
 // reddit reducer
 const modRefReducer = combineReducers({

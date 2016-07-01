@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 
 import __modRefIon from '../actions';		// <===== ctts
 const __modRefCer = 'd3Res'				// <===== id
-import __refModelSvgEnt  from '../components/redux3d-d3svg-component';
+import __refModelSvgEnt  from '../components/rxmod-d3svg-component';
 
 let data = {
   points: [

@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 
 import __modRefIon from '../actions';		// <===== ctts
 const __modRefCer = 'd3Res'				// <===== id
-import __modRefEnt  from '../components/redux3d-d3bars-component';
+import __modRefEnt  from '../components/rxmod-d3bars-component';
 
 let data = {
   points: [

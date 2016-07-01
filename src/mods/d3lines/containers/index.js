@@ -1,2 +1,2 @@
-import container from './redux3d-d3lines-container';
+import container from './rxmod-d3lines-container';
 export default container

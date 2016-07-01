@@ -1,5 +1,5 @@
 /* ---------------------------			*/
-/* redux3d-rxtodos-actions.js   		*/
+/* rxmod-rxtodos-actions.js   		*/
 /* ---------------------------			*/
 
 import ModPackage from '../package.js'

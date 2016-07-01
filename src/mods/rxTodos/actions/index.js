@@ -1,3 +1,3 @@
-import { ActionTypes, ActionCreators } from './redux3d-rxtodos-actions'
+import { ActionTypes, ActionCreators } from './rxmod-rxtodos-actions'
 export {ActionTypes, ActionCreators}
 

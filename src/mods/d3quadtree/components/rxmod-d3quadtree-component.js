@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import * as d3 from 'd3.v4.0.0';
 
 /* component */
-import ChartD3V4Obj from './redux3d-d3quadtree-chart-obj';
-import { styles } from './redux3d-d3quadtree-chart-styles.scss';
+import ChartD3V4Obj from './rxmod-d3quadtree-chart-obj';
+import { styles } from './rxmod-d3quadtree-chart-styles.scss';
 
 class LineChart extends Component {
 

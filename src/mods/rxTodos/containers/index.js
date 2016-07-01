@@ -1,2 +1,2 @@
-import container from './redux3d-rxtodos-container';
+import container from './rxmod-rxtodos-container';
 export default container

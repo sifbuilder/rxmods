@@ -1,2 +1,2 @@
-import * as actionCreators from './redux3d-d3svg-actions';
+import * as actionCreators from './rxmod-d3svg-actions';
  export default actionCreators

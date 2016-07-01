@@ -1,2 +1,2 @@
-import * as constants from './redux3d-d3svg-constants';
+import * as constants from './rxmod-d3svg-constants';
 export default constants

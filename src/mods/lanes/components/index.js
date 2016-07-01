@@ -1,4 +1,4 @@
-import  __modRefEnt  from './redux3d-lanes-component'
+import  __modRefEnt  from './rxmod-lanes-component'
 
 export {__modRefEnt}
 

@@ -1,4 +1,4 @@
-import  rxmodComponent from './redux3d-asyncdata-component'
+import  rxmodComponent from './rxmod-asyncdata-component'
 
 export default { rxmodComponent }
 

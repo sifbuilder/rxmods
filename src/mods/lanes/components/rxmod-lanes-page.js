@@ -1,5 +1,5 @@
 import * as d3 from 'd3.v4.0.0';
-import modRefChart from './redux3d-lanes-chart';
+import modRefChart from './rxmod-lanes-chart';
 
 // ---------------------------
 const src = "../data/messages.csv"

@@ -1,2 +1,2 @@
-import * as constants from './redux3d-d3lines-constants';
+import * as constants from './rxmod-d3lines-constants';
 export default constants

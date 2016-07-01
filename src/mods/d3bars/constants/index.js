@@ -1,2 +1,2 @@
-import * as constants from './redux3d-d3bars-constants';
+import * as constants from './rxmod-d3bars-constants';
 export default constants

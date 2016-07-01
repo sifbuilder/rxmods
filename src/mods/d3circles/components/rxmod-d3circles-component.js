@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { styles } from './styles.scss';
 
 /* component objects */
-import RxmodsD3circlesRenderer from './redux3d-d3circles-renderer';
+import RxmodsD3circlesRenderer from './rxmod-d3circles-renderer';
 
 class RxmodsD3circlesComponent extends Component {
   constructor(props) {

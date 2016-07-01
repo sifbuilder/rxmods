@@ -1,2 +1,2 @@
-import container from './redux3d-lanes-container';
+import container from './rxmod-lanes-container';
 export default container

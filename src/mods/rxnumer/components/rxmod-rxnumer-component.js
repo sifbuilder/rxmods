@@ -7,7 +7,6 @@ class rxmodComponent extends Component {
   const { modName, datums, actions} = this.props
     return (
       <div >
-				<p>ner: {modName} </p>
 						<p className={textStyles}>Clicked: {datums.count} times</p>
 						{' '}
 						<button onClick={actions.increment} className={styles} >+</button>

@@ -1,2 +1,2 @@
-import container from './redux3d-d3particles-container';
+import container from './rxmod-d3particles-container';
 export default container

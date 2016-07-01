@@ -1,5 +1,5 @@
 /* ---------------------------			*/
-/* redux3d-d3circles-actions.js   		*/
+/* rxmod-d3circles-actions.js   		*/
 /* ---------------------------			*/
 
 import rxmodPackage from '../package.js'

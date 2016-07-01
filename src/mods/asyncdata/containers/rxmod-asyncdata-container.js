@@ -1,5 +1,5 @@
 /* ---------------------------			*/
-/* redux3d-asyncdata-container.js 	*/
+/* rxmod-asyncdata-container.js 	*/
 /* ---------------------------			*/
 
 import React, { Component, PropTypes } from 'react';

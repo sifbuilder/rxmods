@@ -1,2 +1,2 @@
-import container from './redux3d-d3quadtree-container';
+import container from './rxmod-d3quadtree-container';
 export default container

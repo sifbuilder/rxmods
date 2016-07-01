@@ -1,5 +1,5 @@
 /* ---------------------------			*/
-/* redux3d-rxnumer-container.js  		*/
+/* rxmod-rxnumer-container.js  		*/
 /* ---------------------------			*/
 
 import React, { Component, PropTypes } from 'react'
@@ -12,7 +12,7 @@ const rxmodPackageName = rxmodPackage.name
 import rxmodActions from '../actions';
 const { ActionTypes, ActionCreators } = rxmodActions
 
-import rxmodComponent  from '../components/redux3d-rxnumer-component';
+import rxmodComponent  from '../components/rxmod-rxnumer-component';
 
 class rxmodContainer extends Component {
   render() {

@@ -1,2 +1,2 @@
-import container from './redux3d-asyncdata-container';
+import container from './rxmod-asyncdata-container';
 export default container

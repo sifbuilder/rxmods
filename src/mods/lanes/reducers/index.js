@@ -1,2 +1,2 @@
-import reducer from './redux3d-lanes-reducer';
+import reducer from './rxmod-lanes-reducer';
 export default reducer

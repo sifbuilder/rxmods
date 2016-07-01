@@ -1,3 +1,3 @@
-import { ActionTypes, ActionCreators } from './redux3d-lanes-actions'
+import { ActionTypes, ActionCreators } from './rxmod-lanes-actions'
 export {ActionTypes, ActionCreators}
 

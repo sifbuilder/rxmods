@@ -1,2 +1,2 @@
-import reducer from './redux3d-d3svg-reducer';
+import reducer from './rxmod-d3svg-reducer';
 export default reducer

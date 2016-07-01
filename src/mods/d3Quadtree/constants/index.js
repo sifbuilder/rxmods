@@ -1,2 +1,2 @@
-import * as constants from './redux3d-d3quadtree-constants';
+import * as constants from './rxmod-d3quadtree-constants';
 export default constants

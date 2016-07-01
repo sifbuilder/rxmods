@@ -1,2 +1,2 @@
-import reducer from './redux3d-d3quadtree-reducer';
+import reducer from './rxmod-d3quadtree-reducer';
 export default reducer

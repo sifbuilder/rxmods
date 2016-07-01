@@ -1,2 +1,2 @@
-import container from './redux3d-d3circles-container';
+import container from './rxmod-d3circles-container';
 export default container

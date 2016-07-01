@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom';
-import modRefPage from './redux3d-lanes-page';
-import { styles } from './styles/styles.scss';
+import * as d3 from 'd3.v4.0.0';
+import modRefPage from './rxmod-d3bars-page';
+
+import { styles } from './rxmod-d3bars-styles.scss';
 
 export default class __modRefEnt extends Component {
-	
-	static propTypes = {
+	 static propTypes = {
 	  addItem: PropTypes.func.isRequired,
 	  delItem: PropTypes.func.isRequired,
 	  __modRefItems: PropTypes.array.isRequired
@@ -20,25 +21,20 @@ export default class __modRefEnt extends Component {
     }
 
 	 componentDidMount() {
-	 	let el = 	ReactDOM.findDOMNode(this.refs.d3lanes)	// elem
+	 	let el = 	ReactDOM.findDOMNode(this.refs.d3Bars)	// elem
 		modRefPage(el, {}, {})
 	}
 
 	componentDidUpdate(prevProps) {
 		let el = 	ReactDOM.findDOMNode(this.refs.chartD3V4Ent)
-		if (prevProps.loading === true && this.props.loading === true) {
-		}
 	}
   
   
   render() {
     return (
 	     <div className="component">
-			<p> |------- d3lanes  </p>
-				<div ref="d3lanes" id="d3lanes" className={styles}></div>
-			<p>  d3lanes ------| </p>
+				<div ref="d3Bars" id="d3Bars" className={styles}></div>
 		</div>	
     )
   }
 }
-

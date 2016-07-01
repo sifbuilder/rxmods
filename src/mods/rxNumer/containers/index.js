@@ -1,6 +1,6 @@
 /* ---------------------------			   */
-/* redux3d/rxnumer/container/index.js  */
+/* rxmod/rxnumer/container/index.js  */
 /* ---------------------------			   */
 
-import container from './redux3d-rxnumer-container';
+import container from './rxmod-rxnumer-container';
 export default container

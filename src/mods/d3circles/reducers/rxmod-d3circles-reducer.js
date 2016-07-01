@@ -1,5 +1,5 @@
 /* ---------------------------			*/
-/* redux3d-d3circles-reducer.js   		*/
+/* rxmod-d3circles-reducer.js   		*/
 /* ---------------------------			*/
 
 import rxmodActions from '../actions';

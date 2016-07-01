@@ -7,14 +7,8 @@ import { Router, useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
 
 import { Route, IndexRoute } from 'react-router';
- 
 const history = useRouterHistory(createHashHistory)({ queryKey: false });
 
-
-// import { routeReducer } from 'redux-simple-router';
-// import { reducer as formReducer } from 'redux-form';
-// import thunk from 'redux-thunk'
-// import logger from 'redux-logger'
 import routing from 'rxRouting'
 import form from 'rxForm'
 import thunk from 'rxThunk'
@@ -33,28 +27,13 @@ import rxnumer from 'rxnumer'
 import d3shapes from 'd3shapes'
 import d3svg from 'd3svg'
 
-
-
 import lanes from 'lanes'
-
-
-
-// var d3particlesEs = require('d3particles/index.js')
-// var d3particles
-// if (d3particlesEs.__esModule) d3particles=d3particlesEs.default
-
 // import rebApp from 'rebApp'
 // import rebHome from 'rebHome'
 // import rebList from 'rebList'
-
 // import rxCounter from 'rxCounter'
-
 // import rxStoreViz from 'rxStoreViz'
-
-
 // import uberCity from 'uberCity'
-
-
 
   
 let mods = {
@@ -69,18 +48,12 @@ let mods = {
 	rxnumer,
 	rxtodos,
 	d3circles,
-		// modRef,
-		
 	// rebApp,
 	// rebHome,
 	// rebList,
-
 	// rxStoreViz,		// instrument
 	// rxCounter,
-	
 	// uberCity,
-	
-	// applNer,
 	}
 
 /* ------------- UTILS */
@@ -115,11 +88,6 @@ for (let modKey in mods) {
 	if (mods[modKey].Inst != undefined) instruments.push(mods[modKey].Inst)		// instruments
 	if (mods[modKey].Route != undefined) routes.push(mods[modKey].Route)			// routes
 }
-// console.log("...thunk:");console.log( mods.thunk.MW)
-// console.log("...logger:");console.log(mods.logger.MW)
-// console.log("...middleware:");console.log(middleware)
-console.log("...routes:");console.log(routes)
- 
  
   /* ------------- store with middleware */
   // expect:

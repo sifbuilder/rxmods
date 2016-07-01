@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import d3 from 'd3.v4.0.0';
 
 /* components */
-import RefModelChartEnt  from '../components/redux3d-d3quadtree-component';
+import RefModelChartEnt  from '../components/rxmod-d3quadtree-component';
 
 /* actions */
 import * as obj from '../actions';

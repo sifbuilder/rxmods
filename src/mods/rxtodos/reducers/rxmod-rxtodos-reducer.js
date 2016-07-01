@@ -1,5 +1,5 @@
 /* ---------------------------			*/
-/* redux3d-rxtodos-reducer.js   		*/
+/* rxmod-rxtodos-reducer.js   		*/
 /* ---------------------------			*/
 
 import {ActionTypes,

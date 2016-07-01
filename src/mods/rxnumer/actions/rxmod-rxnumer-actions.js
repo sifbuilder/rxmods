@@ -1,5 +1,5 @@
 /* ---------------------------			*/
-/* redux3d-rxnumer-actions.js   		*/
+/* rxmod-rxnumer-actions.js   		*/
 /* ---------------------------			*/
 
 import rxmodPackage from '../package.js'

@@ -1,2 +1,2 @@
-import container from './redux3d-d3shapes-container';
+import container from './rxmod-d3shapes-container';
 export default container
