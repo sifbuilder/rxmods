@@ -1,2 +1,0 @@
-export const ADD_ITEM = 'MODREF_ADD_ITEM';
-export const DELETE_ITEM = 'MODREF_DELETE_ITEM';

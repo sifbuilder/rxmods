@@ -1,3 +1,6 @@
-import { ActionTypes, ActionCreators } from './rxmod-lanes-actions'
-export {ActionTypes, ActionCreators}
+/* ---------------------------			   */
+/* rxmod/lanes/actions/index.js    */
+/* ---------------------------			   */
 
+import rxmodActions from './rxmod-lanes-actions'
+export default rxmodActions

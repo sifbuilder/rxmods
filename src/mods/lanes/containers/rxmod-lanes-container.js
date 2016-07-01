@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { pushState } from 'react';
 import ReactDOM from 'react-dom';
 
-import {ActionTypes as __modRefCtt,
-		ActionCreators as __modRefIon} from '../actions';
-import __modRefCard from '../package.js'
-import __modRefEnt  from '../components/rxmod-lanes-component';
-let __modRefCer = __modRefCard.name
-let _e_ = __modRefCard.name
+import rxmodPackage from '../package.js'
+const rxmodPackageName = rxmodPackage.name
+
+import rxmodActions from '../actions';
+const { ActionTypes, ActionCreators } = rxmodActions
+		
+import RxmodLanesComponent  from '../components/rxmod-lanes-component';
 
 /* RENDER */
 class __modRefNer extends Component {
@@ -26,7 +27,7 @@ class __modRefNer extends Component {
 
 	// 				
   render() {
-	const { __modRefItems } = this.props
+	const { rxmodState } = this.props
     return (
       <section>
        <div className="container">
@@ -34,7 +35,7 @@ class __modRefNer extends Component {
 		  <div className="row">
             <div >
 			
-			  <__modRefEnt {...this.props}/>
+			  <RxmodLanesComponent {...this.props}/>
 			
             </div>	
           </div>
@@ -45,18 +46,18 @@ class __modRefNer extends Component {
 }
 
 __modRefNer.propTypes = {
-  __modRefItems: PropTypes.array.isRequired,
+  rxmodState: PropTypes.object.isRequired,
   }
 
 /* __advModelChildEnt - connect to STORE */
 function mapStateToProps(state) {
   return {
-	__modRefItems: state[__modRefCer].__modRefItems,
+		rxmodState: state[rxmodPackageName],
   };
 }
 function mapDispatchToProps(dispatch) {
   const actionsAll = Object.assign({},
-    bindActionCreators(__modRefIon, dispatch), { dispatch });
+    bindActionCreators(ActionCreators, dispatch), { dispatch });
   return actionsAll;
 }
 export default  connect(

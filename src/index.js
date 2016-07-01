@@ -14,20 +14,19 @@ import form from 'rxForm'
 import thunk from 'rxThunk'
 import logger from 'rxLogger'
 
-
 import asyncdata from 'asyncdata'
 import d3particles from 'd3particles'
 import d3circles from 'd3circles'
-import d3bars from 'd3bars'			//
-import d3lines from 'd3lines'		//
-import d3quadtree from 'd3quadtree'	//
 import rxtodos from 'rxtodos'
 import rxnumer from 'rxnumer'
 
-import d3shapes from 'd3shapes'
-import d3svg from 'd3svg'
-
 import lanes from 'lanes'
+
+// import d3bars from 'd3bars'			//
+// import d3lines from 'd3lines'		//
+// import d3quadtree from 'd3quadtree'	//
+// import d3shapes from 'd3shapes'
+// import d3svg from 'd3svg'
 // import rebApp from 'rebApp'
 // import rebHome from 'rebHome'
 // import rebList from 'rebList'
@@ -42,12 +41,13 @@ let mods = {
 	thunk,			// middleware
 	// logger,			// middleware
 	asyncdata,
-	lanes,
-	d3quadtree,
 	d3particles,
 	rxnumer,
 	rxtodos,
 	d3circles,
+	lanes,
+	// d3quadtree,
+	// d3lines,
 	// rebApp,
 	// rebHome,
 	// rebList,

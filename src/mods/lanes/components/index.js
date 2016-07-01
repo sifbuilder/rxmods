@@ -1,4 +1,7 @@
-import  __modRefEnt  from './rxmod-lanes-component'
+/* ---------------------------			   */
+/* rxmod/lanes/components/index.js     */
+/* ---------------------------			   */
 
-export {__modRefEnt}
-
+import rxmodComponent from './rxmod-lanes-component'
+var rxmodComponents = { rxmodComponent }
+export default rxmodComponents

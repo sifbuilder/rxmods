@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-/* component styles */
 import { styles } from './styles.scss';
 
-/* component objects */
 import RxmodsD3circlesRenderer from './rxmod-d3circles-renderer';
 
 class RxmodsD3circlesComponent extends Component {
