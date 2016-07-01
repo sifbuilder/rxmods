@@ -30,11 +30,11 @@ class rxmodContainer extends Component {
 	}
 	
   render() {
-	const { __modRefItems } = this.props
+	const { d3circles } = this.props
     return (
       <section>
        <div className="container">
-					<RxmodComponent ref='e1EntRef' {...this.props} />
+					<RxmodComponent ref='RxmodComponentRef' {...this.props} />
         </div>
 			</section>
     );
@@ -42,11 +42,11 @@ class rxmodContainer extends Component {
 }
 
 rxmodContainer.propTypes = {
-  __modRefItems: PropTypes.array.isRequired,
+  d3circles: PropTypes.array.isRequired,
 }
 function mapStateToProps(state) {
   return {
-	__modRefItems: state[rxmodPackageName].__modRefItems,
+		d3circles: state[rxmodPackageName].d3circles,
   };
 }
 function mapDispatchToProps(dispatch) {
