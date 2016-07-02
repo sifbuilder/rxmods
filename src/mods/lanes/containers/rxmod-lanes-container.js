@@ -1,3 +1,7 @@
+/* ---------------------------	*/
+/* rxmod-lanes-container.js  		*/
+/* ---------------------------	*/
+
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -9,33 +13,24 @@ const rxmodPackageName = rxmodPackage.name
 
 import rxmodActions from '../actions';
 const { ActionTypes, ActionCreators } = rxmodActions
-		
+
 import RxmodLanesComponent  from '../components/rxmod-lanes-component';
 
-/* RENDER */
-class __modRefNer extends Component {
+class RxmodContainer extends Component {
   constructor(props) {
     super(props);
   }
   
-	componentDidMount() {
-		let el = 	ReactDOM.findDOMNode(this.refs.e1EntRef)
-		let e2 = 	ReactDOM.findDOMNode(this.refs.e2EntRef)
-	}
-	componentDidUpdate() {
-	}
-
 	// 				
   render() {
 	const { rxmodState } = this.props
     return (
       <section>
-       <div className="container">
-
-		  <div className="row">
+				<div className="container">
+					<div className="row">
             <div >
 			
-			  <RxmodLanesComponent {...this.props}/>
+							<RxmodLanesComponent {...this.props}/>
 			
             </div>	
           </div>
@@ -45,24 +40,24 @@ class __modRefNer extends Component {
   }
 }
 
-__modRefNer.propTypes = {
+RxmodContainer.propTypes = {
   rxmodState: PropTypes.object.isRequired,
+	actions: PropTypes.object.isRequired,
   }
 
-/* __advModelChildEnt - connect to STORE */
 function mapStateToProps(state) {
   return {
 		rxmodState: state[rxmodPackageName],
   };
 }
 function mapDispatchToProps(dispatch) {
-  const actionsAll = Object.assign({},
-    bindActionCreators(ActionCreators, dispatch), { dispatch });
-  return actionsAll;
+  return {
+    actions: bindActionCreators(ActionCreators, dispatch)
+  }
 }
 export default  connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(__modRefNer);
+)(RxmodContainer);
 
 

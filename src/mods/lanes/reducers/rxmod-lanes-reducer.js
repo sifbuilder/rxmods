@@ -11,36 +11,27 @@ let modName = ModPackage.name
 
 // _____________ LANES
 var initialStateLanes = {
+			areRecordsFetched: false,
+			container: null,
+			keyEventsOnLanes: {},
+
+			periodFactor: 4,
+			fadeFactor: 3,
+			beatTime: 500,
+			itemProps: ['to', 'from'],
+			vstep: 50,
+			currentMode: 'autoMode',
+			currentView: 'lanesView',
+			tickspan: 60,
+			itemSpan: 6,
+			
 			lanes: [],
 			lanesIndex: 0,
 			messages: [],
-			records: [],
-			keyEventsOnLanes: {},
-			recordsCollection: [],
-			areRecordsFetched: false,
 			messagesCursorLow: 0,
 			messagesCursorHigh: 0,
-			recordsCollection_000: [
-				 {id: "1", from: "customer", to: "barrista1", msg: "place order"},
-				 {id: "2", from: "barrista1", to: "register", msg: "enter order"},
-				 {id: "3", from: "register", to: "barrista1", msg: "give total"},
-				 {id: "4", from: "barrista1", to: "barrista1", msg: "get cup making sure that it is fine for purpose"},
-				 {id: "5", from: "barrista1", to: "barrista2", msg: "give cup"},
-				 {id: "6", from: "barrista1", to: "customer", msg: "request money"},
-				 {id: "7", from: "customer", to: "barrista1", msg: "pay order"},
-				 {id: "8", from: "barrista2", to: "barrista2", msg: "get chai mix"},
-				 {id: "9", from: "barrista2", to: "barrista2", msg: "add flavor"},
-				 {id: "10", from: "barrista2", to: "barrista2", msg: "add milk"},
-				 {id: "11", from: "barrista2", to: "barrista2", msg: "add ice"},
-				 {id: "12", from: "barrista2", to: "barrista2", msg: "swirl"},
-				 {id: "13", from: "barrista2", to: "customer", msg: "give tasty beverage"},
-				 {id: "14", from: "customer", to: "tasty beverage", msg: "sip"},
-				 {id: "15", from: "tasty beverage", to: "customer", msg: "burn"},
-				 {id: "16", from: "customer", to: "customer", msg: "cry"},
-				 {id: "17", from: "customer", to: "manager", msg: "complain"},
-				 {id: "18", from: "manager", to: "barrista1", msg: "fire"},
-				 {id: "19", from: "manager", to: "barrista2", msg: "fire"},
-			],
+			records: [],
+			recordsCollection: [],
 			recordsCollection: [
 				 {id: "1", from: "app", to: "store", msg: "create store"},
 				 {id: "2", from: "store", to: "store", msg: "subscribe lanes listener"},
@@ -83,6 +74,13 @@ var initialStateLanes = {
 function rxmodReducer(state = initialStateLanes, action) {
 	if (action == null) return state
     switch (action.type) {
+		
+		
+				case ActionTypes.SET_CONTAINER:		// setContainer
+					var r = Object.assign({}, state,
+						{container: action.container})
+					return r
+		
 				case ActionTypes.DELETE_LANE:		// deleteLane
 					var lanes = state.lanes
 					var ls = lanes.filter(function( obj ) {
@@ -169,6 +167,7 @@ function rxmodReducer(state = initialStateLanes, action) {
             })
 						
 				case ActionTypes.SET_RECORDS_COLLECTION:	// setRecordsCollection
+						console.log('SET_RECORDS_COLLECTION', action, state)
 						var r = state
 						if (state.areRecordsFetched == false) {
 							// console.log('SET_RECORDS_COLLECTION')
@@ -180,7 +179,7 @@ function rxmodReducer(state = initialStateLanes, action) {
 						return r
 						
 				case ActionTypes.SET_RECORDS:
-						// console.log('SET_RECORDS')
+						console.log('SET_RECORDS', action, state)
 						var vLow = state.messagesCursorLow
 						var vHigh = state.messagesCursorHigh
 						var itemSpan = action.itemSpan
@@ -196,6 +195,8 @@ function rxmodReducer(state = initialStateLanes, action) {
 									|| (vLow == -1) 									// get always from reset
 									) vLow = vLow + 1									// increase lower border
 							if (vLow > numRecords) vLow = -1			// reset at end of cycle
+						// console.log('SET_RECORDS records', records, numRecords, vLow, vHigh)
+						console.log('SET_RECORDS records', state.recordsCollection.slice(vLow, vHigh))
 							r = Object.assign({}, state, {
 								records: state.recordsCollection.slice(vLow, vHigh),
 								messagesCursorLow: vLow,

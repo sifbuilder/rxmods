@@ -25,6 +25,8 @@ var keyMirror = function(obj, prefix) {
 
 var actionConstants = {
 	DELETE_LANE: '',
+	RENDER_LANES: '',
+	SET_CONTAINER: '',
 	SET_LANE: '',
 	SET_LANES: '',
 	SET_MESSAGES: '',
@@ -56,6 +58,17 @@ var ActionCreators = {
         lane: lane,
 		}
   },
+	renderLanes(argObj) {
+    return {
+        type: ActionTypes.RENDER_LANES,
+ 		}
+  },
+	setContainer(argObj) {
+    return {
+        type: ActionTypes.SET_CONTAINER,
+				container: argObj.container
+ 		}
+  },
 	setRecordsFetched(areRecordsFetched) {
     return {
         type: ActionTypes.SET_RECORDS_FETCHED,
@@ -67,7 +80,7 @@ var ActionCreators = {
         type: ActionTypes.SET_RECORDS,
         itemSpan: argObj.itemSpan,
         mode: argObj.currentMode,
-    }
+    }	
   },
 	setRecordsCollection(obj) {	// SET_RECORDS_COLLECTION
     return {
