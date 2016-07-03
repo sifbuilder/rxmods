@@ -1,6 +1,6 @@
 
 /* ---------------------------			*/
-/* rxmod-lanes-actions.js   		*/
+/* rxmod-d3lanes-actions.js   		*/
 /* ---------------------------			*/
 
 import rxmodPackage from '../package.js'
@@ -24,11 +24,11 @@ var keyMirror = function(obj, prefix) {
 
 
 var actionConstants = {
-	DELETE_LANE: '',
-	RENDER_LANES: '',
+	DELETE_D3LANE: '',
+	RENDER_D3LANES: '',
 	SET_CONTAINER: '',
-	SET_LANE: '',
-	SET_LANES: '',
+	SET_D3LANE: '',
+	SET_D3LANES: '',
 	SET_MESSAGES: '',
 	SET_RECORDS: '',
 	SET_RECORDS_COLLECTION: '',
@@ -40,7 +40,7 @@ var actionConstants = {
 
 var ActionTypes = keyMirror(actionConstants, '')
 
-// ____________________ actions LANES
+// ____________________ actions D3LANES
 var ActionCreators = {
 	decreaseCursorLow() {
     return {
@@ -52,15 +52,15 @@ var ActionCreators = {
         type: ActionTypes.DECREASE_CURSOR_HIGH,
 		}
   },
-	deleteLane(lane) {
+	deleteD3lane(d3lane) {
     return {
-        type: ActionTypes.DELETE_LANE,
-        lane: lane,
+        type: ActionTypes.DELETE_D3LANE,
+        d3lane: d3lane,
 		}
   },
-	renderLanes(argObj) {
+	renderD3lanes(argObj) {
     return {
-        type: ActionTypes.RENDER_LANES,
+        type: ActionTypes.RENDER_D3LANES,
  		}
   },
 	setContainer(argObj) {
@@ -88,16 +88,16 @@ var ActionCreators = {
         recordsCollection: obj.recordsCollection
     }
   },
-	setLane(lane) {
+	setD3lane(d3lane) {
     return {
-        type: ActionTypes.SET_LANE,
-        lane: lane,
+        type: ActionTypes.SET_D3LANE,
+        d3lane: d3lane,
 		}
   },
-	setLanes(lanes) {
+	setD3lanes(d3lanes) {
     return {
-        type: ActionTypes.SET_LANES,
-        lanes: lanes,
+        type: ActionTypes.SET_D3LANES,
+        d3lanes: d3lanes,
 		}
   },
 	setMessages(messages) {

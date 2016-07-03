@@ -1,5 +1,5 @@
 const mod = {
-  "name": "lanes",
+  "name": "d3lanes",
   "description": "d3 lanes",
   "license": "MIT",
   "version": "1.1.0"

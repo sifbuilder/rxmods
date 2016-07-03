@@ -1,6 +1,6 @@
 
 /* ---------------------------			*/
-/* rxmod-lanes-reducer.js   		*/
+/* rxmod-d3lanes-reducer.js   		*/
 /* ---------------------------			*/
 
 import rxmodActions from '../actions';
@@ -9,11 +9,11 @@ const { ActionTypes, ActionCreators } = rxmodActions
 import ModPackage from '../package.js'
 let modName = ModPackage.name
 
-// _____________ LANES
-var initialStateLanes = {
+// _____________ D3LANES
+var initialStateD3lanes = {
 			areRecordsFetched: false,
 			container: null,
-			keyEventsOnLanes: {},
+			keyEventsOnD3lanes: {},
 
 			periodFactor: 4,
 			fadeFactor: 3,
@@ -21,12 +21,12 @@ var initialStateLanes = {
 			itemProps: ['to', 'from'],
 			vstep: 50,
 			currentMode: 'autoMode',
-			currentView: 'lanesView',
+			currentView: 'd3lanesView',
 			tickspan: 60,
 			itemSpan: 6,
 			
-			lanes: [],
-			lanesIndex: 0,
+			d3lanes: [],
+			d3lanesIndex: 0,
 			messages: [],
 			messagesCursorLow: 0,
 			messagesCursorHigh: 0,
@@ -34,7 +34,7 @@ var initialStateLanes = {
 			recordsCollection: [],
 			recordsCollection: [
 				 {id: "1", from: "app", to: "store", msg: "create store"},
-				 {id: "2", from: "store", to: "store", msg: "subscribe lanes listener"},
+				 {id: "2", from: "store", to: "store", msg: "subscribe d3lanes listener"},
 				 {id: "3", from: "store", to: "store", msg: "subscribe particles listener"},
 				 {id: "4", from: "app", to: "app", msg: "start kbd controller"},
 				 {id: "5", from: "app", to: "app", msg: "start mouse controller"},
@@ -45,7 +45,7 @@ var initialStateLanes = {
 				 {id: "10", from: "reducer", to: "reducer", msg: "apply action logic"},
 				 {id: "11", from: "reducer", to: "store", msg: "return new state"},
 				 {id: "12", from: "ticker", to: "ticker", msg: "run listeners"},
-				 {id: "13", from: "renderer", to: "UI", msg: "render lanes"},
+				 {id: "13", from: "renderer", to: "UI", msg: "render d3lanes"},
 				 {id: "14", from: "UI", to: "app", msg: "trigger left arrow event"},
 				 {id: "15", from: "store", to: "reducer", msg: "dispatch setMode action"},
 				 {id: "16", from: "reducer", to: "reducer", msg: "run action"},
@@ -56,13 +56,13 @@ var initialStateLanes = {
 				 {id: "21", from: "reducer", to: "reducer", msg: "run action and get record"},
 				 {id: "22", from: "reducer", to: "reducer", msg: "return new set"},
 				 {id: "23", from: "ticker", to: "ticker", msg: "run listeners"},
-				 {id: "24", from: "renderer", to: "UI", msg: "render lanes"},
+				 {id: "24", from: "renderer", to: "UI", msg: "render d3lanes"},
 				 {id: "25", from: "UI", to: "app", msg: "send right arrow event"},
 				 {id: "26", from: "store", to: "reducer", msg: "dispatch setMode action"},
 				 {id: "27", from: "reducer", to: "reducer", msg: "run action"},
 				 {id: "28", from: "reducer", to: "reducer", msg: "return new mode auto"},
 				 {id: "29", from: "ticker", to: "ticker", msg: "run listeners with new state"},
-				 {id: "30", from: "renderer", to: "UI", msg: "render auto lanes"},
+				 {id: "30", from: "renderer", to: "UI", msg: "render auto d3lanes"},
 				 {id: "31", from: "store", to: "reducer", msg: "dispatch createParticles action"},
 				 {id: "32", from: "reducer", to: "reducer", msg: "run action"},
 				 {id: "33", from: "reducer", to: "store", msg: "return new state with particles"},
@@ -71,7 +71,7 @@ var initialStateLanes = {
 			],
 	}
 	
-function rxmodReducer(state = initialStateLanes, action) {
+function rxmodReducer(state = initialStateD3lanes, action) {
 	if (action == null) return state
     switch (action.type) {
 		
@@ -81,53 +81,53 @@ function rxmodReducer(state = initialStateLanes, action) {
 						{container: action.container})
 					return r
 		
-				case ActionTypes.DELETE_LANE:		// deleteLane
-					var lanes = state.lanes
-					var ls = lanes.filter(function( obj ) {
-							return obj.id !== action.lane.id;
+				case ActionTypes.DELETE_D3LANE:		// deleteD3lane
+					var d3lanes = state.d3lanes
+					var ls = d3lanes.filter(function( obj ) {
+							return obj.id !== action.d3lane.id;
 						})
 					var r = Object.assign({}, state,
-						{lanes: ls},
-						{lanesIndex: ls.length}
+						{d3lanes: ls},
+						{d3lanesIndex: ls.length}
 						)
 					return r
 
-				case ActionTypes.SET_LANE:		// setLane
-					var lanes = state.lanes
+				case ActionTypes.SET_D3LANE:		// setD3lane
+					var d3lanes = state.d3lanes
 					var ls = {}
-					var result = lanes.filter(function( obj ) {
-							return obj.id == action.lane.id;
+					var result = d3lanes.filter(function( obj ) {
+							return obj.id == action.d3lane.id;
 						});
 							
 					if (result.length === 0) {			// add
-						ls = {lanes: [
+						ls = {d3lanes: [
 							{
-									id: action.lane.id,
-									name: action.lane.name,
-									x: action.lane.x
+									id: action.d3lane.id,
+									name: action.d3lane.name,
+									x: action.d3lane.x
 							}, 
-							...lanes
+							...d3lanes
 						]}
 					} else {												// edit
-							ls = {lanes: lanes.map(lane =>
-								lane.id === action.lane.id ?
-									Object.assign({}, lane, { id: action.lane.id, name: action.lane.name, x: action.lane.x }) :
-									lane
+							ls = {d3lanes: d3lanes.map(d3lane =>
+								d3lane.id === action.d3lane.id ?
+									Object.assign({}, d3lane, { id: action.d3lane.id, name: action.d3lane.name, x: action.d3lane.x }) :
+									d3lane
 							)}
 					}
 					
 					 var r = Object.assign({}, state,
 						ls,
 						{
-							lanesIndex: ls.lanes.length
+							d3lanesIndex: ls.d3lanes.length
 						})
 						return r
 						
-        case ActionTypes.SET_LANES:		// setLanes
- 						// console.log('SET_LANES')
+        case ActionTypes.SET_D3LANES:		// setD3lanes
+ 						// console.log('SET_D3LANES')
             return Object.assign({}, state, {
-                lanes: action.lanes,
-                lanesIndex: Object.keys(action.lanes).length
+                d3lanes: action.d3lanes,
+                d3lanesIndex: Object.keys(action.d3lanes).length
             })
 				case ActionTypes.FETCH_RECORDS:	// fetchRecords
 						// console.log('FETCH_RECORDS')
@@ -144,8 +144,8 @@ function rxmodReducer(state = initialStateLanes, action) {
 							if (store.getState().court.currentMode == 0) {	// _tbd_  
 									++timeTick
 									++vLast
-									store.dispatch(actions.setMessages(store.getState().reducerLanes.recordsCollection.slice(0,
-										store.getState().reducerLanes.recordsCollection.length)))
+									store.dispatch(actions.setMessages(store.getState().reducerD3lanes.recordsCollection.slice(0,
+										store.getState().reducerD3lanes.recordsCollection.length)))
 							}
 						}
 						d3.queue()
@@ -206,7 +206,7 @@ function rxmodReducer(state = initialStateLanes, action) {
 						return r
 
 				case ActionTypes.WALK_UP_RECORDS:			// walkUpRecords
-						var keyEventsOnLanes = state.keyEventsOnLanes
+						var keyEventsOnD3lanes = state.keyEventsOnD3lanes
 						var altKeyCode = 18, ctrlKeyCode = 17 
 						var vKeyCode = 86, dKeyCode = 68, fKeyCode = 70
 						var leftArrow = 37, rightArrow = 39, leftArrow = 37, upArrow = 38, downArrow = 40
@@ -218,10 +218,10 @@ function rxmodReducer(state = initialStateLanes, action) {
 						var currentMode = action.payload.mode
 						var r = state
 						if (currentMode == 'walkMode') {
-							if (keyEventsOnLanes.upArrow !== null && keyEventsOnLanes.upArrow !== action.payload.keyEvents.upArrow) {			// upArrow
-										keyEventsOnLanes.upArrow = action.payload.keyEvents.upArrow
+							if (keyEventsOnD3lanes.upArrow !== null && keyEventsOnD3lanes.upArrow !== action.payload.keyEvents.upArrow) {			// upArrow
+										keyEventsOnD3lanes.upArrow = action.payload.keyEvents.upArrow
 										vLow = Math.max(0, --vLow)
-										r = Object.assign({}, state, keyEventsOnLanes) 
+										r = Object.assign({}, state, keyEventsOnD3lanes) 
 										r = Object.assign({}, state, {
 											records: state.recordsCollection.slice(vLow, vHigh),
 											messagesCursorLow: vLow,
@@ -232,7 +232,7 @@ function rxmodReducer(state = initialStateLanes, action) {
 						return r
 						
 				case ActionTypes.WALK_DOWN_RECORDS:			// walkDownRecords
-						var keyEventsOnLanes = state.keyEventsOnLanes
+						var keyEventsOnD3lanes = state.keyEventsOnD3lanes
 						var altKeyCode = 18, ctrlKeyCode = 17 
 						var vKeyCode = 86, dKeyCode = 68, fKeyCode = 70
 						var leftArrow = 37, rightArrow = 39, leftArrow = 37, upArrow = 38, downArrow = 40
@@ -244,9 +244,9 @@ function rxmodReducer(state = initialStateLanes, action) {
 						var currentMode = action.payload.currentMode
 						var r = Object.assign({}, state)
 						if (currentMode == 'walkMode') {
-							if (keyEventsOnLanes.downArrow !== null && keyEventsOnLanes.downArrow !== action.payload.keyEvents.downArrow) {			// downArrow
-								keyEventsOnLanes.downArrow = action.payload.keyEvents.downArrow
-								r = Object.assign({}, state, keyEventsOnLanes) 
+							if (keyEventsOnD3lanes.downArrow !== null && keyEventsOnD3lanes.downArrow !== action.payload.keyEvents.downArrow) {			// downArrow
+								keyEventsOnD3lanes.downArrow = action.payload.keyEvents.downArrow
+								r = Object.assign({}, state, keyEventsOnD3lanes) 
 								if ((vHigh - vLow)  >= itemSpan) ++vLow
 								++vHigh
 									r = Object.assign({}, state, {

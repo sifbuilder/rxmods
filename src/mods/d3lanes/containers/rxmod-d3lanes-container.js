@@ -1,5 +1,5 @@
 /* ---------------------------	*/
-/* rxmod-lanes-container.js  		*/
+/* rxmod-d3lanes-container.js  		*/
 /* ---------------------------	*/
 
 import React, { Component, PropTypes } from 'react';
@@ -14,7 +14,7 @@ const rxmodPackageName = rxmodPackage.name
 import rxmodActions from '../actions';
 const { ActionTypes, ActionCreators } = rxmodActions
 
-import RxmodLanesComponent  from '../components/rxmod-lanes-component';
+import RxmodD3lanesComponent  from '../components/rxmod-d3lanes-component';
 
 class RxmodContainer extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class RxmodContainer extends Component {
 					<div className="row">
             <div >
 			
-							<RxmodLanesComponent {...this.props}/>
+							<RxmodD3lanesComponent {...this.props}/>
 			
             </div>	
           </div>

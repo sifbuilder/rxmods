@@ -47,7 +47,7 @@ rxmodContainer.propTypes = {
 function mapStateToProps(state) {
   return {
 		d3circles: state[rxmodPackageName].d3circles,
-  };
+  }
 }
 function mapDispatchToProps(dispatch) {
 		const actionsAll = Object.assign({},

@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 import { styles } from './styles/styles.scss';
 
-import RxmodsLanesRenderer from './rxmod-lanes-renderer';
+import RxmodsD3lanesRenderer from './rxmod-d3lanes-renderer';
 
-class RxmodsLanesComponent extends Component {
+class RxmodsD3lanesComponent extends Component {
 	
 	static propTypes = {
 	  rxmodState: PropTypes.object.isRequired,
@@ -18,7 +18,7 @@ class RxmodsLanesComponent extends Component {
   }
 
 	 componentDidMount() {
-							let el = 	ReactDOM.findDOMNode(this.refs.RxmodsLanesComponentRef)
+							let el = 	ReactDOM.findDOMNode(this.refs.RxmodsD3lanesComponentRef)
 	
 									var rxmodState = this.props.rxmodState
 									var msgs = rxmodState.recordsCollection
@@ -49,17 +49,17 @@ class RxmodsLanesComponent extends Component {
 														if (vLow > numRecords) vLow = -1			// reset at end of cycle
 														var records = recordsCollection.slice(vLow, vHigh)
 														state.records = records
-														RxmodsLanesRenderer(el, state)
+														RxmodsD3lanesRenderer(el, state)
 									 }
 								delay_add(msgs)
 	}
 
 	componentDidUpdate(prevProps) {
-		let el = 	ReactDOM.findDOMNode(this.refs.RxmodsLanesComponentRef)
+		let el = 	ReactDOM.findDOMNode(this.refs.RxmodsD3lanesComponentRef)
 		if (prevProps.loading === true && this.props.loading === true) {
 		}
 		
-		if (this.RxmodsLanesRenderer == null &&  prevProps.loading === true && this.props.loading === true) {
+		if (this.RxmodsD3lanesRenderer == null &&  prevProps.loading === true && this.props.loading === true) {
 		}
 	}
   
@@ -67,11 +67,11 @@ class RxmodsLanesComponent extends Component {
   render() {
     return (
 	     <div className="component">
-				<div ref="RxmodsLanesComponentRef" id="RxmodsLanesComponentRef" className={styles}></div>
+				<div ref="RxmodsD3lanesComponentRef" id="RxmodsD3lanesComponentRef" className={styles}></div>
 		</div>	
     )
   }
 }
 
-export default RxmodsLanesComponent;
+export default RxmodsD3lanesComponent;
 

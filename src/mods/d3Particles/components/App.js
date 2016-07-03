@@ -12,15 +12,7 @@ class App extends Component {
   constructor(props, context) {
     super(props, context)
 
-		console.log("this: ", this)		// fix size **************** 
-		
-// props.datums.svgWidth = 100
-// props.datums.svgHeight = 100
-
 		const {datums, actions} = props
-		
-
-		
 		
   }
 			// ------
@@ -76,8 +68,6 @@ class App extends Component {
 		
     componentDidMount() {
         let svg = d3.select(this.refs.svg);
-// width={this.props.datums.svgWidth}
-// height={this.props.datums.svgHeight}
         svg.on('mousedown', () => {
            this.updateMousePos();
             this.startParticles();
@@ -103,8 +93,6 @@ class App extends Component {
         });
     }
 
-
-
     render() {
 		
         let timestamp = new Date().getTime(),
@@ -115,8 +103,6 @@ class App extends Component {
             <div onMouseDown={e => this.startTicker()} style={{}}>
  								<Header />
                  <svg className={style.tile}
-											// width={this.props.datums.svgWidth}
-											// height={this.props.datums.svgHeight}
                       ref="svg"
                       style={{background: 'rgba(124, 224, 249, .3)'}}>
                      <Particles particles={this.props.datums.particles} />

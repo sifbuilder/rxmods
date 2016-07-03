@@ -20,7 +20,7 @@ import d3circles from 'd3circles'
 import rxtodos from 'rxtodos'
 import rxnumer from 'rxnumer'
 
-import lanes from 'lanes'
+import d3lanes from 'd3lanes'
 
 // import d3bars from 'd3bars'			//
 // import d3lines from 'd3lines'		//
@@ -35,17 +35,18 @@ import lanes from 'lanes'
 // import uberCity from 'uberCity'
 
   
-let mods = {
-	routing,		// reducer
-	form,			// reducer
-	thunk,			// middleware
+// let mods = {
+	// routing,		// reducer
+	// form,			// reducer
+	// thunk,			// middleware
+	// asyncdata,
+	// d3particles,
+	// rxnumer,
+	// rxtodos,
+	// d3circles,
+	// d3lanes,
+	// }
 	// logger,			// middleware
-	asyncdata,
-	d3particles,
-	rxnumer,
-	rxtodos,
-	d3circles,
-	lanes,
 	// d3quadtree,
 	// d3lines,
 	// rebApp,
@@ -54,8 +55,8 @@ let mods = {
 	// rxStoreViz,		// instrument
 	// rxCounter,
 	// uberCity,
-	}
 
+	
 /* ------------- UTILS */
  var newelm = function (elid) {
 	let element = document.getElementById("root")
@@ -80,6 +81,19 @@ let instruments = []
 let reducers = {} // form: formReducer,	// routing: routeReducer,
 let containers = {}
 let routes = []
+
+
+let mods = {
+	routing,		// reducer
+	form,				// reducer
+	thunk,			// middleware
+	asyncdata,
+	d3particles,
+	rxnumer,
+	rxtodos,
+	d3circles,
+	d3lanes,
+}
 
 for (let modKey in mods) {
  	if (mods[modKey].Ner != undefined) containers[modKey] = mods[modKey].Ner	// containers

@@ -27,7 +27,7 @@ class RxmodsD3circlesComponent extends Component {
 
   render() {
 		return (
-            <div ref="RxmodsD3circlesComponentRef" id="RxmodsD3circlesComponent" className={styles}>
+            <div ref="RxmodsD3circlesComponentRef" id="RxmodsD3circlesComponent" >
             </div>
           )
   }

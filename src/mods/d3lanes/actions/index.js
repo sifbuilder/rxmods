@@ -1,6 +1,6 @@
 /* ---------------------------			   */
-/* rxmod/lanes/actions/index.js    */
+/* rxmod/d3lanes/actions/index.js    */
 /* ---------------------------			   */
 
-import rxmodActions from './rxmod-lanes-actions'
+import rxmodActions from './rxmod-d3lanes-actions'
 export default rxmodActions

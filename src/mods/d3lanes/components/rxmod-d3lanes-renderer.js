@@ -1,6 +1,6 @@
 	
 /* 	---------------------------------	*/
-/* rxmods-lanes-renderer.js   		*/
+/* rxmods-d3lanes-renderer.js   		*/
 /* 	---------------------------------	*/
 
 import * as d3 from 'd3.v4.0.0'
@@ -99,33 +99,15 @@ var intransition = false
 
 
 // ================== renderer ==================
-// class renderer {
-	// constructor(el, payload = {}) {
-
 function renderer(el, payload = {}) {
-
 			
-					var newState = payload
+				var newState = payload
 					
-					// return on transition
 				if (intransition == true) return
-
-			// console.log(" ^^^^^^^^^^^^^ oldState ", JSON.stringify(oldState.records, null, 2))		
 				
-					// return on same data
-				if (JSON.stringify(oldState.records) === JSON.stringify(newState.records)) {
-					// return 
-				}
-
-				// console.log(" ^^^^^^^^^^^^^ _runners0 ", JSON.stringify(oldState.records, null, 2))		
-				// console.log(" ^^^^^^^^^^^^^ _runners1 ", JSON.stringify(newState.records, null, 2))		
-
-				// store previous - will not change during renderer
 				var _runners0 = oldState.records || []
-				
 				oldState= newState
 				
-				// var state =  newState
 				var _runners1 = newState.records
 				var	fadeFactor = newState.fadeFactor	// times beat - fade items
 				var	periodFactor = newState.periodFactor // times beat - add items
@@ -134,21 +116,9 @@ function renderer(el, payload = {}) {
 				var currentView = newState.currentView
 				var itemSpan = newState.itemSpan
 
-			
-				// hide on wrong views
 				var _opacity = 1
-				// var currentView = 'lanesView'
-				if (currentView !== 'lanesView') _opacity = 0
-				// var	fadeFactor = 3,	// times beat - fade items
-				// var	periodFactor = 4, // times beat - add items
-				// var beatTime = 500
-				// var itemProps = ['to', 'from']
+				if (currentView !== 'd3lanesView') _opacity = 0
 				var _fadeTime = fadeFactor * beatTime
-				// var itemProps = itemProps
-				// var	currentMode = 'autoMode'
-				// var	tickspan = 60
-				// var	itemSpan = 6
-				// var periodTime = periodFactor	* beatTime // items added						
 			
 							var svgContainer = d3.select(el)
 								.selectAll('svg')
@@ -156,23 +126,23 @@ function renderer(el, payload = {}) {
 							var newSvgContainer = svgContainer
 								.enter()
 								.append("svg")
-									.attr("id", "lanes_svg")
+									.attr("id", "d3lanes_svg")
 							var svgElement = 	d3.select("svg")	
 							
 					var width = parseInt(svgElement.style("width"), 10)
 					var height = parseInt(svgElement.style("height"), 10)
 					var vstep = parseInt(height / (itemSpan + 1), 10)	// vertical step
 					
-							var laneGroup = svgContainer
-									.selectAll('g.lane')
-									.data(['lane'])
+							var d3laneGroup = svgContainer
+									.selectAll('g.d3lane')
+									.data(['d3lane'])
 									.style('opacity', _opacity)
 										
-								laneGroup.enter()	
+								d3laneGroup.enter()	
 									.append("g")
-										.classed("lane", true)
+										.classed("d3lane", true)
 										
-					var runnersGroup = laneGroup
+					var runnersGroup = d3laneGroup
 						.selectAll('g.runners')
 						.data(['runners'])
 							
@@ -180,17 +150,17 @@ function renderer(el, payload = {}) {
 						.append("g")
 							.classed("runners", true)
 
-					var lanesGroup = laneGroup
-						.selectAll('g.lanes')
-						.data(['lanes'])
+					var d3lanesGroup = d3laneGroup
+						.selectAll('g.d3lanes')
+						.data(['d3lanes'])
 							
-					lanesGroup.enter()	
+					d3lanesGroup.enter()	
 						.append("g")
-							.classed("lanes", true)
+							.classed("d3lanes", true)
 
-				var markerInstance = laneGroup.select(".runner-marker")
+				var markerInstance = d3laneGroup.select(".runner-marker")
 				if (markerInstance.node() == null) {
-						laneGroup
+						d3laneGroup
 							.append("marker")
 							.attr("id", "runner-marker")
 							.attr("class", "runner-marker")
@@ -205,59 +175,59 @@ function renderer(el, payload = {}) {
 								.attr("d", "M 0 0 L 10 5 L 0 10 z")
 					}
 							
-					var _laneItems0 = arrayUtils()
+					var _d3laneItems0 = arrayUtils()
 						.array_names_from_props(_runners0, itemProps)
 
-					var _laneObjs0 = _laneItems0.map(function(d, i) {
+					var _d3laneObjs0 = _d3laneItems0.map(function(d, i) {
 							return ({id: d,
 										name: d,
-										x0: parseFloat(coordsUtils().hcoord_pct(_laneItems0, d)
+										x0: parseFloat(coordsUtils().hcoord_pct(_d3laneItems0, d)
 											* parseInt(svgContainer.style("width")) / 100).toFixed(0)})})
 
-					var _lanesObj0 = _laneItems0.reduce(function(total,d,currentIndex,arr) {
+					var _d3lanesObj0 = _d3laneItems0.reduce(function(total,d,currentIndex,arr) {
 							var o = {}
 							o[d] = {name: d,
-															x0: parseFloat(coordsUtils().hcoord_pct(_laneItems0, d)
+															x0: parseFloat(coordsUtils().hcoord_pct(_d3laneItems0, d)
 											* parseInt(svgContainer.style("width")) / 100).toFixed(0)}
 							return (Object.assign({}, total, o))}, {})								
 
 
-					var _laneItems1 = arrayUtils()
+					var _d3laneItems1 = arrayUtils()
 						.array_names_from_props(_runners1, itemProps)
 						
-					var _laneObjs1 = _laneItems1.map(function(d, i) {
+					var _d3laneObjs1 = _d3laneItems1.map(function(d, i) {
 
 					var x0 = 0
-							if ( _lanesObj0.hasOwnProperty( d) ) {
-									x0 =  _lanesObj0[d].x0
+							if ( _d3lanesObj0.hasOwnProperty( d) ) {
+									x0 =  _d3lanesObj0[d].x0
 							}
 						return ({id: d,
 									name: d,
 									x0: x0})})
 										
-							// laneElems trasition
+							// d3laneElems trasition
 								var redux3dTransition = d3.transition()
 									.duration(_fadeTime)
 									.ease(d3.easeLinear)
 			
-							// laneElements DATA
-								var laneElements = svgContainer
-									.select("g.lanes")
-										.selectAll("g.lane")
-										.data(_laneObjs1, function(d) { return d.id })				
+							// d3laneElements DATA
+								var d3laneElements = svgContainer
+									.select("g.d3lanes")
+										.selectAll("g.d3lane")
+										.data(_d3laneObjs1, function(d) { return d.id })				
 							
-							// laneElements EXIT
-									laneElements.exit()
+							// d3laneElements EXIT
+									d3laneElements.exit()
 											.transition(redux3dTransition)
 												.style("opacity", function(d) {
-																// store.dispatch(actions.deleteLane(d))
-																// actions.deleteLane(d)
+																// store.dispatch(actions.deleteD3lane(d))
+																// actions.deleteD3lane(d)
 													return 0
 												})
 												.remove(function(){})										
 											
-							// laneElements UPDATE	texts
-								var laneTexts = laneElements.select("text")
+							// d3laneElements UPDATE	texts
+								var d3laneTexts = d3laneElements.select("text")
 													.attr("text-anchor", "middle")
 													.attr("alignment-baseline", "middle")
 													.style("font-size", function(d, i) { 
@@ -267,7 +237,7 @@ function renderer(el, payload = {}) {
 													.attr("dy", "20")
 											.transition(redux3dTransition)
 												.attr("x", function(d, i) {
-														var r = coordsUtils().hcoord_tagged_pct(_laneItems1, d.name)
+														var r = coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.name)
 														return r
 												})
 											.on("start", function start() {		
@@ -277,10 +247,10 @@ function renderer(el, payload = {}) {
 													intransition = false
 											})
 
-							// laneElements UPDATE lines
-								var laneLines = laneElements.select("line")
+							// d3laneElements UPDATE lines
+								var d3laneLines = d3laneElements.select("line")
 									.attr("x0", function(d, i) {
-										var r = parseFloat(coordsUtils().hcoord_pct(_laneItems0, d.name)
+										var r = parseFloat(coordsUtils().hcoord_pct(_d3laneItems0, d.name)
 														* parseInt(svgContainer.style("width")) / 100).toFixed(0)
 										return r
 									})
@@ -291,11 +261,11 @@ function renderer(el, payload = {}) {
 									.attr("y2", "100%")
 										.transition(redux3dTransition)
 											.attr("x1", function(d, i) {
-													var r = coordsUtils().hcoord_tagged_pct(_laneItems1, d.name)
+													var r = coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.name)
 													return r
 											})
 											.attr("x2", function(d, i) {
-													var r = coordsUtils().hcoord_tagged_pct(_laneItems1, d.name)
+													var r = coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.name)
 													return r
 											})
 											.on("start", function start() {		
@@ -305,15 +275,15 @@ function renderer(el, payload = {}) {
 													intransition = false
 											})								
 									
-							// newLaneElements ENTER
-								var newLaneElements = laneElements
+							// newD3laneElements ENTER
+								var newD3laneElements = d3laneElements
 									.enter()
 										.append("g")
-											.classed("lane", true)
+											.classed("d3lane", true)
 
-							// newLaneElements ENTER text
-								newLaneElements.append("text")
-									.attr("class", "lane")
+							// newD3laneElements ENTER text
+								newD3laneElements.append("text")
+									.attr("class", "d3lane")
 									.attr("text-anchor", "middle")
 									.attr("alignment-baseline", "middle")
 									.style("font-family", "sans-serif")
@@ -325,7 +295,7 @@ function renderer(el, payload = {}) {
 									.attr("dy", "20")
 
 									.attr("x", function(d, i, a) {
-										var r =  coordsUtils().hcoord_tagged_pct(_laneItems1, d.name)
+										var r =  coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.name)
 										return r
 									})
 									.transition(redux3dTransition)
@@ -337,26 +307,26 @@ function renderer(el, payload = {}) {
 													intransition = false
 											})									
 											
-							// newLaneElements ENTER lines																			
-								newLaneElements.append("line")
-									.attr("class", "lane")
+							// newD3laneElements ENTER lines																			
+								newD3laneElements.append("line")
+									.attr("class", "d3lane")
 									.attr("stroke", "lightgray")
 									.style("stroke-width", "1px")
 									.attr("stroke-width", 1)
 									.attr("x0", function(d, i) {
-										var r = parseFloat(coordsUtils().hcoord_pct(_laneItems0, d.name)
+										var r = parseFloat(coordsUtils().hcoord_pct(_d3laneItems0, d.name)
 														* parseInt(svgContainer.style("width")) / 100).toFixed(0)
 										return r
 									})
 									.attr("x1", function(d, i, a) { 
-												var r = coordsUtils().hcoord_tagged_pct(_laneItems1, d.name)
-												var x = parseFloat(coordsUtils().hcoord_pct(_laneItems1, d.name)
+												var r = coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.name)
+												var x = parseFloat(coordsUtils().hcoord_pct(_d3laneItems1, d.name)
 														* parseInt(svgContainer.style("width")) / 100).toFixed(0)
 														var l = {name: d.name, id: d.id, x: x }
 												return r
 									})
 									.attr("x2", function(d, i, a) { 
-												var r = coordsUtils().hcoord_tagged_pct(_laneItems1, d.name)
+												var r = coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.name)
 												return r
 									})
 									.attr("y1", function(_d, i) {
@@ -378,8 +348,8 @@ function renderer(el, payload = {}) {
 									runnerElements.select('text')
 										.transition(redux3dTransition)
 												.attr("x", function(d, i) {
-													var r1 = coordsUtils().hcoord_pct(_laneItems1, d.from)
-													var r2 = coordsUtils().hcoord_pct(_laneItems1, d.to)
+													var r1 = coordsUtils().hcoord_pct(_d3laneItems1, d.from)
+													var r2 = coordsUtils().hcoord_pct(_d3laneItems1, d.to)
 													var r = coordsUtils().hcenter_tagged_pct(r1, r2)
 													return r
 												})
@@ -398,11 +368,11 @@ function renderer(el, payload = {}) {
 									runnerElements.select('line')						 
 									.transition(redux3dTransition)
 										.attr("x1", function(d, i, a) { 
-													var r = coordsUtils().hcoord_tagged_pct(_laneItems1, d.from)
+													var r = coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.from)
 													return r
 									})
 									.attr("x2", function(d, i, a) { 
-												var r = coordsUtils().hcoord_tagged_pct(_laneItems1, d.to)
+												var r = coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.to)
 												return r
 									})
 									.attr("y1", function(d, i) {
@@ -424,7 +394,7 @@ function renderer(el, payload = {}) {
 									runnerElements.select("path")
 										.transition(redux3dTransition)
 											.attr("d", function(d, i) { 			
-													var	x_pc = coordsUtils().hcoord_tagged_pct(_laneItems1, d.from)
+													var	x_pc = coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.from)
 													var xScrollWidth = parseInt(svgContainer.style("width"))
 													var t = xScrollWidth * Number.parseFloat(x_pc)/100
 													var x = t
@@ -466,8 +436,8 @@ function renderer(el, payload = {}) {
 														.text(d.msg)
 														.attr("y", (i + 2) * vstep - 10)
 														.attr("x", function() {
-															var x1 = coordsUtils().hcoord_pct(_laneItems1, d.from)
-															var x2 = coordsUtils().hcoord_pct(_laneItems1, d.to)
+															var x1 = coordsUtils().hcoord_pct(_d3laneItems1, d.from)
+															var x2 = coordsUtils().hcoord_pct(_d3laneItems1, d.to)
 															var r = coordsUtils().hcenter_tagged_pct(x1, x2)
 															return r
 														})
@@ -492,7 +462,7 @@ function renderer(el, payload = {}) {
 																	// this._current = d_to_arc(d, i); // store initial state
 															})
 														.attr("d", function() { 			
-																var	x_pc_to = coordsUtils().hcoord_pct(_laneItems1, d.to)
+																var	x_pc_to = coordsUtils().hcoord_pct(_d3laneItems1, d.to)
 																var xScrollWidth = parseInt(svgContainer.style("width"))
 																var t = xScrollWidth * Number.parseFloat(x_pc_to)/100
 																var x = t																		
@@ -539,8 +509,8 @@ function renderer(el, payload = {}) {
 																var r = (i + 2) * vstep ; 
 																return r 
 														})	
-														.attr("x1", coordsUtils().hcoord_tagged_pct(_laneItems1, d.from))
-														.attr("x2", coordsUtils().hcoord_tagged_pct(_laneItems1, d.to))
+														.attr("x1", coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.from))
+														.attr("x2", coordsUtils().hcoord_tagged_pct(_d3laneItems1, d.to))
 														.transition(redux3dTransition)
 																	.attr("stroke", "gray")
 																	.attr("fill", "grey")

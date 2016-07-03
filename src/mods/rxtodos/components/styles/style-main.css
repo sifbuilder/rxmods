@@ -13,7 +13,8 @@
 
 .normal li {
   position: relative;
-  font-size: 24px;
+//  font-size: 24px;
+  font-size: 2vw;
   border-bottom: 1px solid #ededed;
 }
 
@@ -29,8 +30,8 @@
 .normal li.editing .edit {
   display: block;
   width: 506px;
-  padding: 13px 17px 12px 17px;
-  margin: 0 0 0 43px;
+//  padding: 13px 17px 12px 17px;
+//  margin: 0 0 0 43px;
 }
 
 .normal li.editing .view {
@@ -61,7 +62,7 @@
 .normal li label {
   white-space: pre-line;
   word-break: break-all;
-  padding: 15px 60px 15px 15px;
+//  padding: 15px 60px 15px 15px;
   margin-left: 45px;
   display: block;
   line-height: 1.2;
@@ -80,11 +81,11 @@
   right: 10px;
   bottom: 0;
   width: 40px;
-  height: 40px;
+ // height: 40px;
   margin: auto 0;
-  font-size: 30px;
+ // font-size: 30px;
   color: #cc9a9a;
-  margin-bottom: 11px;
+ // margin-bottom: 11px;
   transition: color 0.2s ease-out;
 }
 
@@ -140,7 +141,7 @@
   }
 
   .normal li .toggle {
-    height: 40px;
+//    height: 40px;
   }
 
   .toggleAll {
